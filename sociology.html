@@ -1,0 +1,856 @@
+
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>გეოფოკუსი | სოციოლოგია</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* მხოლოდ სოციოლოგიური გვერდის დამატებითი სტილები */
+
+.sociology {
+    width: 92%;
+    max-width: 1100px;
+    margin: 35px auto;
+}
+
+/* შესავლის ახალი დიზაინი */
+
+.sociology-intro {
+    background: linear-gradient(135deg, #06152E, #174d91);
+    border-radius: 16px;
+    padding: 48px 30px;
+    text-align: center;
+    color: white;
+    margin: 35px 0 40px;
+    box-shadow: 0 8px 24px rgba(6,21,46,0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.sociology-intro::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 50%;
+    top: -100px;
+    right: -55px;
+}
+
+.sociology-intro::after {
+    content: "";
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 50%;
+    bottom: -90px;
+    left: -40px;
+}
+
+.intro-label {
+    display: inline-block;
+    color: #d5e5fa;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.sociology-intro h2 {
+    color: white;
+    font-family: 'Noto Serif Georgian', serif;
+    font-size: 31px;
+    line-height: 1.6;
+    margin: 0 auto 20px;
+    max-width: 850px;
+    position: relative;
+    z-index: 1;
+}
+
+.intro-topics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.intro-topics span {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.22);
+    color: #f1f6ff;
+    padding: 9px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+}
+
+.intro-divider {
+    width: 65px;
+    height: 3px;
+    background: #d58b91;
+    border-radius: 5px;
+    margin: 25px auto;
+    position: relative;
+    z-index: 1;
+}
+
+.intro-description {
+    max-width: 780px;
+    margin: 0 auto;
+    color: #e2ebf8;
+    font-size: 16px;
+    line-height: 2;
+    position: relative;
+    z-index: 1;
+}
+
+.intro-call {
+    display: inline-block;
+    margin-top: 24px;
+    background: white;
+    color: #174d91;
+    padding: 12px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+}
+
+/* კითხვარის არჩევა */
+
+.survey-choices {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin: 30px 0;
+}
+
+.survey-choice {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    border-top: 4px solid #174d91;
+    transition: 0.3s;
+}
+
+.survey-choice:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.10);
+}
+
+.choice-icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.survey-choice h3 {
+    color: #174d91;
+    margin-bottom: 12px;
+    font-size: 21px;
+}
+
+.survey-choice p {
+    color: #52647c;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+.survey-choice button,
+.survey button {
+    background: #174d91;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 11px 18px;
+    cursor: pointer;
+    margin: 10px 5px 0 0;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.survey-choice button:hover,
+.survey button:hover {
+    background: #a52a38;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* კითხვარის ფორმა */
+
+.survey {
+    background: white;
+    padding: 25px;
+    margin: 28px 0;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+.survey h2 {
+    color: #174d91;
+    margin-bottom: 20px;
+}
+
+.survey-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.survey-top strong {
+    color: #174d91;
+}
+
+.progress {
+    height: 9px;
+    background: #e3eaf3;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 15px 0 8px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background: #174d91;
+    transition: 0.3s;
+}
+
+.progress-text {
+    color: #52647c;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.question-card {
+    background: #f4f7fb;
+    padding: 18px;
+    border-radius: 9px;
+    margin: 15px 0;
+}
+
+.question-card h3 {
+    color: #174d91;
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 13px;
+}
+
+.question-card label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 11px 0;
+    cursor: pointer;
+    line-height: 1.6;
+}
+
+.question-card input {
+    margin-top: 5px;
+    accent-color: #174d91;
+    flex-shrink: 0;
+}
+
+.profile-card {
+    background: #f4f7fb;
+    padding: 20px;
+    border-radius: 9px;
+    margin: 20px 0;
+}
+
+.profile-card h3 {
+    color: #174d91;
+    margin-bottom: 15px;
+}
+
+.profile-card label {
+    display: block;
+    margin: 14px 0 7px;
+    font-weight: bold;
+}
+
+.profile-card select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #bdc9d8;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    background: white;
+}
+
+.survey-actions {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.back-button {
+    background: #e5edf7 !important;
+    color: #174d91 !important;
+}
+
+.back-button:hover {
+    background: #d4e2f3 !important;
+}
+
+.thankyou {
+    background: white;
+    padding: 45px 25px;
+    text-align: center;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    margin: 30px 0;
+}
+
+.thankyou .emoji {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.thankyou h2 {
+    color: #174d91;
+    margin-bottom: 15px;
+}
+
+.thankyou p {
+    color: #52647c;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.thankyou button {
+    background: #174d91;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 11px 18px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.thankyou button:hover {
+    background: #a52a38;
+}
+
+@media(max-width: 650px) {
+    .sociology {
+        width: 94%;
+    }
+
+    .sociology-intro {
+        padding: 35px 18px;
+    }
+
+    .sociology-intro h2 {
+        font-size: 23px;
+    }
+
+    .intro-description {
+        font-size: 14px;
+    }
+
+    .intro-topics {
+        gap: 8px;
+    }
+
+    .intro-topics span {
+        font-size: 12px;
+        padding: 8px 11px;
+    }
+
+    .survey-choices {
+        grid-template-columns: 1fr;
+    }
+
+    .survey {
+        padding: 17px;
+    }
+
+    .question-card {
+        padding: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+    <div class="globe-icon">🌍</div>
+    <h1>გეოფოკუსი</h1>
+    <p>შეიცანი მსოფლიო, აღმოაჩინე მეტი!</p>
+</header>
+
+<!-- NAVIGATION -->
+
+<nav class="navigation">
+    <a href="index.html">მთავარი</a>
+    <a href="sport.html">სპორტი</a>
+    <a href="education.html">შემეცნებითი</a>
+    <a href="sociology.html">სოციოლოგიური</a>
+    <a href="entertainment.html">გართობა</a>
+</nav>
+
+<main class="sociology">
+
+    <!-- შესავალი -->
+
+    <section class="sociology-intro">
+
+        <div class="intro-label">GEOFOCUS • SOCIOLOGY</div>
+
+        <h2>თაობათა კონფლიქტი ურბანულ გარემოში</h2>
+
+        <div class="intro-topics">
+            <span>👥 თაობები</span>
+            <span>🏙️ ურბანიზაცია</span>
+            <span>🌐 საზოგადოება</span>
+        </div>
+
+        <div class="intro-divider"></div>
+
+        <p class="intro-description">
+            როგორ მოქმედებს ქალაქის გარემო, ურბანიზაცია და დემოგრაფიული
+            ცვლილებები უფროს და ახალგაზრდა თაობებს შორის ურთიერთობაზე?
+        </p>
+
+        <div class="intro-call">
+            გაიაზრე საკითხი და დააფიქსირე შენი პოზიცია!
+        </div>
+
+    </section>
+
+    <!-- კითხვარის არჩევა -->
+
+    <section id="selection">
+
+        <div class="survey-choices">
+
+            <div class="survey-choice">
+                <div class="choice-icon">🎓</div>
+                <h3>კითხვარი მოსწავლეებისთვის</h3>
+                <p>
+                    გაგვიზიარე შენი შეხედულებები თაობათა ურთიერთობაზე,
+                    ქალაქურ გარემოსა და ახალგაზრდულ კულტურაზე.
+                </p>
+                <button onclick="startSurvey('student')">
+                    კითხვარის შევსება →
+                </button>
+            </div>
+
+            <div class="survey-choice">
+                <div class="choice-icon">📚</div>
+                <h3>კითხვარი მასწავლებლებისთვის</h3>
+                <p>
+                    გაგვიზიარე შენი გამოცდილება მოსწავლეებთან
+                    ურთიერთობისა და თანამედროვე ცვლილებების შესახებ.
+                </p>
+                <button onclick="startSurvey('teacher')">
+                    კითხვარის შევსება →
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- კითხვარი -->
+
+    <section id="survey" class="survey hidden">
+
+        <div class="survey-top">
+            <button class="back-button" onclick="goHome()">← უკან</button>
+            <strong id="surveyType"></strong>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <p class="progress-text" id="progressText"></p>
+
+        <div id="profileArea"></div>
+        <div id="questions"></div>
+
+        <div class="survey-actions">
+            <button onclick="submitSurvey()">
+                კითხვარის დასრულება
+            </button>
+        </div>
+
+    </section>
+
+    <!-- დასრულება -->
+
+    <section id="thankyou" class="hidden">
+        <div class="thankyou">
+            <div class="emoji">🌍</div>
+            <h2>გმადლობთ მონაწილეობისთვის!</h2>
+            <p>
+                თქვენი აზრი მნიშვნელოვანია ჩვენი კვლევისთვის.
+                მადლობა, რომ დრო დაუთმეთ კითხვარის შევსებას!
+            </p>
+            <button onclick="goHome()">
+                მთავარ გვერდზე დაბრუნება
+            </button>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <h2>გეოფოკუსი 🌍</h2>
+    <p>შეიცანი მსოფლიო, აღმოაჩინე მეტი!</p>
+    <a href="https://www.instagram.com/geofocus.official/" target="_blank">
+        @geofocus.official
+    </a>
+    <p class="copyright">© 2026 გეოფოკუსი. ყველა უფლება დაცულია.</p>
+</footer>
+
+<script>
+
+const studentQuestions = [
+
+["შენი აზრით, სად უფრო მეტია „თაობათა კონფლიქტი“ - დიდ ქალაქებში თუ პატარა დასახლებებში?",[
+"დიდ ქალაქებში, სადაც ცხოვრების რიტმი სწრაფია და ახალგაზრდებს მეტი შესაძლებლობა აქვთ ახალი ინტერესებისა და ცხოვრების წესის გასაცნობად.",
+"პატარა დასახლებებში/სოფლებში, სადაც ტრადიციები უფრო მკაცრია და განსხვავებულობა უფრო შესამჩნევია.",
+"ყველგან დაახლოებით ერთნაირადაა."
+]],
+
+["შენი აზრით, სად უფრო ადვილია განსხვავებული სტილისა და ინტერესების მქონე ახალგაზრდებისთვის (სუბკულტურებისთვის) თავის დამკვიდრება?",[
+"დიდ ქალაქში (მეგაპოლისში, სადაც ბევრი ხალხია).",
+"პატარა ქალაქში ან სოფელში.",
+"მნიშვნელობა არ აქვს, ყველგან ერთნაირია."
+]],
+
+["შენი აზრით, ქალაქის არქიტექტურა (მაღალი კორპუსები, ბეტონი, დახურული ეზოები) მოქმედებს იმაზე, თუ როგორ იქცევიან ახალგაზრდები?",[
+"კი, რადგან ხალხი იზოლირებულია და ახალგაზრდები ქუჩებში/სკვერებში ცდილობენ თავის გამოხატვას.",
+"არა, არანაირი კავშირი არ აქვს.",
+"პირიქით, აერთიანებს კიდეც ხალხს."
+]],
+
+["როგორ ფიქრობ, ქალაქის რომელი სივრცე უწყობს ყველაზე მეტად ხელს ახალგაზრდული სუბკულტურებისა და პროტესტის გაჩენას?",[
+"ღია სკვერები, პარკები და ქუჩები.",
+"მიწისქვეშა გადასასვლელები და ეზოები.",
+"სოციალური ქსელები და ვირტუალური სივრცე."
+]],
+
+["როდესაც ოჯახი აკრიტიკებს შენს მუსიკას, ჩაცმულობას ან საუბრის სტილს, შენი აზრით, ამის მიზეზი რა არის?",[
+"თაობებს შორის განსხვავება.",
+"გემოვნება ყოველთვის არ იწვევს კონფლიქტს — ეს ურთიერთგაგებაზეა დამოკიდებული.",
+"ცუდი განწყობა."
+]],
+
+["ეთანხმები თუ არა მოსაზრებას, რომ შენს თაობას რადიკალურად განსხვავებული „ენა“ (სლენგი, მემები, ღირებულებები) აქვს?",[
+"სრულად ვეთანხმები.",
+"ნაწილობრივ ვეთანხმები.",
+"არ ვეთანხმები."
+]],
+
+["შენი აზრით, ქალაქში კულტურული მრავალფეროვნება აძლიერებს თუ არა ღირებულებებს შორის განსხვავებას?",[
+"დიახ, რადგან ადამიანები განსხვავებულ გარემოში იზრდებიან.",
+"არა, მრავალფეროვნება ურთიერთგაგებას უწყობს ხელს.",
+"ეს პიროვნებაზეა დამოკიდებული."
+]],
+
+["რატომ შეიძლება გაუჭირდეთ რეგიონებიდან დედაქალაქში გადასულ ახალგაზრდებს ქალაქში მცხოვრებ უფროს თაობასთან საერთო ენის გამონახვა?",[
+"ქალაქური და რეგიონული ცხოვრების წესის განსხვავების გამო.",
+"ახალგაზრდები უფრო სწრაფად ითვისებენ სიახლეებს, უფროსები კი ტრადიციებს ინარჩუნებენ.",
+"ასეთი პრობლემა არ არსებობს."
+]],
+
+["როგორ მოქმედებს ახალგაზრდების ქალაქებში მიგრაცია ოჯახურ ტრადიციებსა და უფროს თაობაზე?",[
+"ახალგაზრდები ახალ ცხოვრების წესს ითვისებენ, რაც კონფლიქტს იწვევს.",
+"ახალგაზრდები ეგუებიან ახალ გარემოს, მაგრამ ტრადიციებს ინარჩუნებენ.",
+"გავლენას არ ახდენს."
+]],
+
+["როგორ ცვლის ურბანიზაცია თავისუფლებისა და დამოუკიდებლობის შესახებ შეხედულებებს?",[
+"ახალგაზრდები მეტ დამოუკიდებლობას ითხოვენ, უფროს თაობას კი ამის მიღება უჭირს.",
+"ორივე თაობა თანაბრად ეგუება ცვლილებებს.",
+"მნიშვნელოვან გავლენას არ ახდენს."
+]],
+
+["როგორ მოქმედებს მოსახლეობის დაბერება და ახალგაზრდების რაოდენობის შემცირება თაობათა ურთიერთობაზე?",[
+"კონფლიქტს ზრდის.",
+"თანამშრომლობასა და ურთიერთდახმარებას აძლიერებს.",
+"გავლენას არ ახდენს."
+]],
+
+["როგორ ფიქრობ, შეიცვლება თუ არა თაობათა კონფლიქტი 10–20 წელიწადში ურბანიზაციის, დემოგრაფიული ცვლილებებისა და ციფრული ქალაქების განვითარების გამო?",[
+"გაღრმავდება.",
+"შემცირდება.",
+"დაახლოებით უცვლელი დარჩება."
+]]
+
+];
+
+const teacherQuestions = [
+
+["თქვენი აზრით, სად გვხვდება მასწავლებელსა და მოსწავლეს შორის თაობათა კონფლიქტი უფრო ხშირად?",[
+"დიდი ქალაქის სკოლებში.",
+"პატარა ქალაქებსა და სოფლებში.",
+"ყველგან დაახლოებით ერთნაირად."
+]],
+
+["სად უმარტივდებათ განსხვავებული სტილისა და ინტერესების მქონე მოსწავლეებს საკუთარი თავის დამკვიდრება?",[
+"დიდ ქალაქში.",
+"პატარა ქალაქსა და სოფელში.",
+"ყველგან თანაბრად."
+]],
+
+["როგორ შეიცვალა თქვენს სკოლაში მოსწავლეთა რაოდენობა ბოლო 5–10 წლის განმავლობაში?",[
+"გაიზარდა, მათ შორის მიგრაციის შედეგად.",
+"შემცირდა, მიგრაციისა და შობადობის კლების გამო.",
+"თითქმის უცვლელია."
+]],
+
+["როგორ ეგუებიან სხვა ქალაქიდან ან სოფლიდან ჩამოსული მოსწავლეები ახალ გარემოს?",[
+"ადვილად ეგუებიან.",
+"უჭირთ განსხვავებული ცხოვრების წესისა და ტრადიციების გამო.",
+"ასეთი მოსწავლეები იშვიათად არიან."
+]],
+
+["როგორ მოქმედებს ქალაქური გარემო მოსწავლეთა ქცევაზე?",[
+"მნიშვნელოვნად, მათ შორის იზოლაციის გამო.",
+"ნაკლებად — ოჯახსა და თანატოლებს უფრო დიდი გავლენა აქვთ.",
+"გავლენა თითქმის არ აქვს."
+]],
+
+["რომელი სივრცე უწყობს ხელს მოსწავლეთა სუბკულტურებისა და პროტესტის ჩამოყალიბებას?",[
+"ქუჩები, სკვერები და ეზოები.",
+"სკოლა და თანატოლთა ჯგუფები.",
+"სოციალური ქსელები და ვირტუალური სივრცე."
+]],
+
+["რატომ აკრიტიკებენ მასწავლებლები მოსწავლეთა მუსიკას, ჩაცმულობას ან სლენგს?",[
+"თაობებს შორის განსხვავების გამო.",
+"ახალგაზრდული სუბკულტურების არასაკმარისი გაგების გამო.",
+"სკოლის წესებისა და დისციპლინის გამო."
+]],
+
+["გიჭირთ თუ არა მოსწავლეების ენის, სლენგის, მემებისა და ღირებულებების გაგება?",[
+"ძალიან მიჭირს.",
+"ზოგჯერ მიჭირს.",
+"თითქმის არასდროს."
+]],
+
+["ადარებთ თუ არა დღევანდელ ქალაქს, სკოლასა და ცხოვრებას საკუთარ ბავშვობას?",[
+"ხშირად ვადარებ და ეს მოსწავლეების უკეთ გაგებაში მეხმარება.",
+"ხშირად ვადარებ, თუმცა მოსწავლეები ნაკლებად ინტერესდებიან ჩემი გამოცდილებით.",
+"თითქმის არასდროს."
+]],
+
+["დროის უკან დაბრუნების შესაძლებლობა რომ გქონდეთ, რას გააკეთებდით მოსწავლეების უკეთ გასაგებად?",[
+"შევიდოდი დღევანდელი მოსწავლეების ყოველდღიურ ცხოვრებაში.",
+"ვაჩვენებდი მათ ჩემს სკოლის წლებს.",
+"არაფერი შეიცვლება — მთავარი დიალოგია."
+]],
+
+["როგორ იმოქმედებს მოსახლეობის დაბერება და მოსწავლეთა რაოდენობის შემცირება სკოლებზე 20–30 წლის შემდეგ?",[
+"პატარა სკოლები დაიხურება ან გაერთიანდება, განსაკუთრებით სოფლად.",
+"გაძლიერდება ინდივიდუალური მიდგომა.",
+"მნიშვნელოვანი გავლენა არ ექნება."
+]],
+
+["როგორ ფიქრობთ, როგორი იქნება მასწავლებელსა და მოსწავლეს შორის ურთიერთობა 20–30 წლის შემდეგ?",[
+"თაობებს შორის განსხვავება კიდევ უფრო გაღრმავდება.",
+"ურთიერთობა უფრო თანამშრომლობითი გახდება.",
+"მნიშვნელოვნად არ შეიცვლება."
+]]
+
+];
+
+let currentType = "";
+let currentQuestions = [];
+
+function startSurvey(type) {
+
+    currentType = type;
+
+    currentQuestions = type === "student"
+        ? studentQuestions
+        : teacherQuestions;
+
+    document.getElementById("selection").classList.add("hidden");
+    document.getElementById("survey").classList.remove("hidden");
+    document.getElementById("thankyou").classList.add("hidden");
+
+    document.getElementById("surveyType").textContent =
+        type === "student"
+        ? "🎓 მოსწავლეების კითხვარი"
+        : "📚 მასწავლებლების კითხვარი";
+
+    document.getElementById("profileArea").innerHTML = "";
+
+    if (type === "teacher") {
+        document.getElementById("profileArea").innerHTML = `
+            <div class="profile-card">
+                <h3>დამატებითი ინფორმაცია</h3>
+
+                <label>ასაკი</label>
+                <select id="age">
+                    <option value="">აირჩიეთ</option>
+                    <option>30 წლამდე</option>
+                    <option>30–45 წელი</option>
+                    <option>46–60 წელი</option>
+                    <option>60 წელზე მეტი</option>
+                </select>
+
+                <label>პედაგოგიური გამოცდილება</label>
+                <select id="experience">
+                    <option value="">აირჩიეთ</option>
+                    <option>5 წელზე ნაკლები</option>
+                    <option>5–15 წელი</option>
+                    <option>15 წელზე მეტი</option>
+                </select>
+
+                <label>სკოლის მდებარეობა</label>
+                <select id="location">
+                    <option value="">აირჩიეთ</option>
+                    <option>დიდი ქალაქი</option>
+                    <option>პატარა ქალაქი</option>
+                    <option>სოფელი</option>
+                </select>
+            </div>
+        `;
+    }
+
+    renderQuestions();
+    window.scrollTo({top: 0, behavior: "smooth"});
+}
+
+function renderQuestions() {
+
+    const container = document.getElementById("questions");
+    container.innerHTML = "";
+
+    currentQuestions.forEach((question, index) => {
+
+        let html = `
+            <div class="question-card">
+                <h3>${index + 1}. ${question[0]}</h3>
+        `;
+
+        question[1].forEach((option, optionIndex) => {
+            html += `
+                <label>
+                    <input
+                        type="radio"
+                        name="question${index}"
+                        value="${optionIndex}"
+                        onchange="updateProgress()"
+                    >
+                    <span>${option}</span>
+                </label>
+            `;
+        });
+
+        html += `</div>`;
+        container.innerHTML += html;
+    });
+
+    updateProgress();
+}
+
+function updateProgress() {
+
+    let answered = 0;
+
+    currentQuestions.forEach((question, index) => {
+        if (document.querySelector(
+            `input[name="question${index}"]:checked`
+        )) {
+            answered++;
+        }
+    });
+
+    const percentage = answered / currentQuestions.length * 100;
+
+    document.getElementById("progressBar").style.width =
+        percentage + "%";
+
+    document.getElementById("progressText").textContent =
+        `შევსებულია ${answered} / ${currentQuestions.length} კითხვა`;
+}
+
+function submitSurvey() {
+
+    for (let i = 0; i < currentQuestions.length; i++) {
+
+        const selected = document.querySelector(
+            `input[name="question${i}"]:checked`
+        );
+
+        if (!selected) {
+            alert(`გთხოვ, უპასუხე ${i + 1}-ე კითხვას.`);
+
+            document.querySelectorAll(".question-card")[i].scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            return;
+        }
+    }
+
+    if (currentType === "teacher") {
+
+        const age = document.getElementById("age").value;
+        const experience = document.getElementById("experience").value;
+        const location = document.getElementById("location").value;
+
+        if (!age || !experience || !location) {
+            alert("გთხოვ, შეავსე დამატებითი ინფორმაცია.");
+
+            document.getElementById("profileArea").scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            return;
+        }
+    }
+
+    document.getElementById("survey").classList.add("hidden");
+    document.getElementById("thankyou").classList.remove("hidden");
+
+    window.scrollTo({top: 0, behavior: "smooth"});
+}
+
+function goHome() {
+
+    document.getElementById("selection").classList.remove("hidden");
+    document.getElementById("survey").classList.add("hidden");
+    document.getElementById("thankyou").classList.add("hidden");
+
+    document.getElementById("questions").innerHTML = "";
+    document.getElementById("profileArea").innerHTML = "";
+    document.getElementById("progressBar").style.width = "0%";
+
+    window.scrollTo({top: 0, behavior: "smooth"});
+}
+
+</script>
+
+</body>
+</html>
+
+

@@ -68,14 +68,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 65px;
-    padding: 24px;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 20px 12px;
     background: white;
     border-bottom: 1px solid #e2e7ee;
     box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+    width: 100%;
 }
 
 .navigation a {
+    display: inline-block;
+    white-space: nowrap;
     text-decoration: none;
     color: #174d91;
     font-family: 'Noto Serif Georgian', serif;
@@ -129,12 +133,10 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
     color: white;
     padding: 20px;
@@ -165,17 +167,13 @@ body {
     position: absolute;
     top: 25px;
     right: 30px;
-
     width: 48px;
     height: 48px;
-
     border: 1px solid rgba(255,255,255,0.7);
     border-radius: 50%;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     font-size: 18px;
     font-weight: bold;
     color: white;
@@ -187,17 +185,14 @@ body {
     max-width: 1100px;
     margin: 45px auto;
     padding: 20px;
-
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
     flex-wrap: wrap;
-
     color: #174d91;
     font-size: 15px;
     font-weight: 600;
-
     border-top: 1px solid #d5dfeb;
     border-bottom: 1px solid #d5dfeb;
 }
@@ -208,13 +203,10 @@ body {
     max-width: 1050px;
     margin: 55px auto;
     padding: 45px 50px;
-
     text-align: center;
     background: white;
-
     border-radius: 12px;
     border-top: 4px solid #174d91;
-
     box-shadow: 0 5px 25px rgba(16,45,80,0.06);
 }
 
@@ -273,12 +265,10 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-
     color: #111;
     font-size: 19px;
     font-weight: 700;
     text-decoration: none;
-
     transition: 0.3s;
 }
 
@@ -330,18 +320,14 @@ body {
 .category {
     min-height: 210px;
     padding: 30px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-
     text-decoration: none;
     color: white;
-
     border-radius: 10px;
     overflow: hidden;
-
     position: relative;
     transition: 0.3s;
 }
@@ -428,8 +414,9 @@ footer .copyright {
     }
 
     .navigation {
-        gap: 18px;
+        gap: 15px;
         flex-wrap: wrap;
+        padding: 16px 8px;
     }
 
     .navigation a {
@@ -484,5 +471,4 @@ footer .copyright {
     .section-heading h2 {
         font-size: 23px;
     }
-
 }

@@ -1,0 +1,701 @@
+
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>გეოფოკუსი | შემეცნებითი</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f4f7fb;
+    color: #26364d;
+    font-family: "Fira GO", Arial, sans-serif;
+}
+
+.rome-page {
+    width: 92%;
+    max-width: 1150px;
+    margin: 0 auto 70px;
+}
+
+.rome-hero {
+    margin: 35px 0;
+    padding: 55px 35px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #06152e, #174d91);
+    color: white;
+    text-align: center;
+}
+
+.rome-hero .eyebrow {
+    color: #e9b9a5;
+    letter-spacing: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.rome-hero h2 {
+    font-family: "Noto Serif Georgian", serif;
+    font-size: 48px;
+    margin: 15px 0;
+    letter-spacing: 5px;
+}
+
+.rome-hero h3 {
+    font-size: 23px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.rome-hero p {
+    max-width: 720px;
+    margin: 18px auto 0;
+    line-height: 1.9;
+    color: #e3eaf5;
+}
+
+.rome-section {
+    background: white;
+    padding: 30px;
+    margin: 28px 0;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(6, 21, 46, 0.07);
+    line-height: 1.9;
+}
+
+.section-label {
+    color: #a52a38;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.rome-section h2 {
+    color: #06152e;
+    font-family: "Noto Serif Georgian", serif;
+    font-size: 27px;
+    margin: 5px 0 18px;
+}
+
+.rome-section h3 {
+    color: #174d91;
+    font-size: 21px;
+    margin: 25px 0 12px;
+}
+
+.rome-section p {
+    margin: 12px 0;
+    font-size: 16px;
+}
+
+.rome-quote {
+    border-left: 5px solid #a52a38;
+    padding: 15px 20px;
+    margin: 25px 0;
+    background: #f8edf0;
+    color: #762b3a;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 0 12px 12px 0;
+}
+
+/* ფოტოები */
+.rome-photo {
+    margin: 25px 0;
+    padding: 10px;
+    background: #f0f4f9;
+    border-radius: 17px;
+    border: 1px solid #e1e8f0;
+}
+
+.rome-photo img {
+    display: block;
+    width: 100%;
+    max-height: 500px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.rome-photo figcaption {
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+    padding: 10px 5px 3px;
+}
+
+/* ეპოქების ღილაკები */
+.era-label {
+    display: inline-block;
+    background: #eaf1fa;
+    color: #174d91;
+    border-radius: 30px;
+    padding: 7px 15px;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+/* საინფორმაციო ბარათები */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin: 22px 0;
+}
+
+.info-card {
+    background: #f2f6fb;
+    border-radius: 15px;
+    padding: 20px;
+    border-top: 4px solid #174d91;
+}
+
+.info-card h3 {
+    margin: 0 0 10px;
+    color: #a52a38;
+    font-size: 18px;
+}
+
+.info-card p {
+    margin: 0;
+    font-size: 15px;
+}
+
+/* დემოგრაფიული მონაცემები */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin: 25px 0;
+}
+
+.stat-card {
+    background: #06152e;
+    color: white;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.stat-card strong {
+    display: block;
+    color: #f0c4bd;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.stat-card span {
+    font-size: 14px;
+    color: #e0e8f4;
+}
+
+/* მომავლის მიმართულებები */
+.future-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 17px;
+    margin-top: 25px;
+}
+
+.future-card {
+    background: linear-gradient(135deg, #f0f5fb, #e5edf8);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid #dce6f2;
+}
+
+.future-card .number {
+    color: #a52a38;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.future-card h3 {
+    margin: 7px 0;
+    color: #06152e;
+    font-size: 18px;
+}
+
+.future-card p {
+    font-size: 15px;
+    margin: 0;
+}
+
+/* საინტერესო ფაქტები */
+.facts {
+    background: #fff8ed;
+    border: 1px solid #f1dfc2;
+}
+
+.facts h2 {
+    color: #8a5524;
+}
+
+.fact-item {
+    padding: 13px 0;
+    border-bottom: 1px solid #ead9bd;
+}
+
+.fact-item:last-child {
+    border-bottom: none;
+}
+
+.fact-item strong {
+    color: #8a5524;
+}
+
+/* დასკვნა */
+.final-section {
+    background: #06152e;
+    color: white;
+    padding: 35px;
+    border-radius: 22px;
+    margin: 30px 0;
+    line-height: 1.9;
+}
+
+.final-section h2 {
+    color: #f0c4bd;
+    font-size: 27px;
+    margin-top: 0;
+}
+
+.final-section p {
+    color: #e5ebf4;
+}
+
+/* მობილური */
+@media (max-width: 700px) {
+    .rome-page {
+        width: 94%;
+    }
+
+    .rome-hero {
+        padding: 38px 20px;
+    }
+
+    .rome-hero h2 {
+        font-size: 36px;
+    }
+
+    .rome-hero h3 {
+        font-size: 18px;
+    }
+
+    .rome-section {
+        padding: 21px;
+    }
+
+    .rome-section h2 {
+        font-size: 23px;
+    }
+
+    .info-grid,
+    .stats-grid,
+    .future-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rome-photo img {
+        max-height: 350px;
+    }
+
+    .final-section {
+        padding: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="globe-icon">🌍</div>
+    <h1>გეოფოკუსი</h1>
+    <p>შეიცანი მსოფლიო, აღმოაჩინე მეტი!</p>
+</header>
+
+<nav class="navigation">
+    <a href="index.html">მთავარი</a>
+    <a href="sport.html">სპორტი</a>
+    <a href="education.html">შემეცნებითი</a>
+    <a href="sociology.html">სოციოლოგიური</a>
+    <a href="entertainment.html">გართობა</a>
+</nav>
+
+<main class="rome-page">
+
+    <!-- მთავარი სათაური -->
+    <section class="rome-hero">
+        <div class="eyebrow">გეოგრაფია × ისტორია</div>
+        <h2>ROMA</h2>
+        <h3>როგორ დაიწყო რომი?</h3>
+        <p>
+            წარსული • აწმყო • მომავალი — ერთი ქალაქი.
+            სამი ეპოქა. ათასწლეულების ისტორია.
+        </p>
+    </section>
+
+    <!-- შესავალი -->
+    <section class="rome-section">
+        <div class="section-label">INTRODUCTION / შესავალი</div>
+        <h2>ყველა გზა რომში მიდის!</h2>
+
+        <p>
+            რომი გვიჩვენებს, როგორ გარდაიქმნება პატარა დასახლება
+            დიდ ცივილიზაციად, როგორ ცვლის მოსახლეობა ქალაქის სივრცეს
+            და როგორ შეიძლება ისტორიულმა დედაქალაქმა მომავლის
+            გამოწვევებს უპასუხოს.
+        </p>
+
+        <p>
+            რომი მდებარეობს იტალიის ნახევარკუნძულზე, ლაციოს რეგიონში,
+            მდინარე ტიბრის ნაპირებზე. ხმელთაშუა ზღვასთან სიახლოვე,
+            მდინარე, ბორცვიანი რელიეფი და სავაჭრო გზებთან კავშირი
+            მის განვითარებას ხელს უწყობდა.
+        </p>
+
+        <p>
+            ქალაქი ტრადიციულად შვიდ ბორცვთან ასოცირდება.
+            ლეგენდის მიხედვით, რომი ძვ. წ. 753 წელს რომულუსმა
+            და რემუსმა დააარსეს. ისტორიული და არქეოლოგიური მონაცემები
+            კი მიუთითებს, რომ ტიბრის მიდამოებში დასახლებები უფრო
+            ადრეც არსებობდა და ისინი თანდათან ქალაქურ ცენტრად გაერთიანდა.
+        </p>
+
+        <figure class="rome-photo">
+            <img src="images/roma1.jpg" alt="რომის პანორამული ხედი">
+            <figcaption>რომი — ქალაქი, სადაც ისტორია და თანამედროვეობა ერთმანეთს ხვდება</figcaption>
+        </figure>
+
+        <div class="rome-quote">
+            „ყველა გზა რომში მიდის!“
+        </div>
+    </section>
+
+    <!-- წარსული -->
+    <section class="rome-section">
+        <span class="era-label">01 / წარსული</span>
+        <div class="section-label">ROMA / გეოგრაფია × ისტორია</div>
+        <h2>ანტიკური რომი და ურბანიზაცია</h2>
+
+        <p>
+            ურბანიზაცია ქალაქების მოსახლეობის ზრდასა და ქალაქური
+            ცხოვრების წესის გავრცელებას ნიშნავს. ანტიკურ რომში
+            მოსახლეობას იზიდავდა ვაჭრობა, ხელოსნობა, სახელმწიფო
+            სამსახური, სამხედრო საქმიანობა და იმპერიის სხვადასხვა
+            ნაწილთან კავშირები.
+        </p>
+
+        <p>
+            იმპერიის ძლიერების პერიოდში რომის მოსახლეობა,
+            სავარაუდოდ, რამდენიმე ასეულ ათასს აღწევდა და ზოგიერთი
+            შეფასებით დაახლოებით ერთ მილიონსაც უახლოვდებოდა;
+            ზუსტი რიცხვი უცნობია.
+        </p>
+
+        <p>
+            მოსახლეობის ზრდამ გააჩინა საცხოვრებლის, საკვების,
+            წყლის, გზებისა და სანიტარიული სისტემების უზრუნველყოფის
+            საჭიროება. ეს გამოწვევები თანამედროვე მეგაქალაქების
+            პრობლემებსაც მოგვაგონებს.
+        </p>
+
+        <figure class="rome-photo">
+            <img src="images/roma2.jpg" alt="კოლიზეუმი და რომის ფორუმი">
+            <figcaption>კოლიზეუმი — ანტიკური რომის ერთ-ერთი ყველაზე ცნობილი ნაგებობა</figcaption>
+        </figure>
+
+        <h3>რომაული ინჟინერია ყოველდღიურ ცხოვრებაში</h3>
+
+        <p>
+            რომში არსებობდა insulae-დ წოდებული მრავალსართულიანი
+            საცხოვრებელი შენობები. მათში ხშირად ჩვეულებრივი
+            მოქალაქეები ცხოვრობდნენ. პირველ სართულებზე შეიძლებოდა
+            მაღაზიები ყოფილიყო, ზედა სართულებზე კი — ბინები.
+        </p>
+
+        <p>
+            აკვედუკები შორეული წყაროებიდან წყალს აწვდიდა ქალაქს.
+            რომაული ბეტონი, რომლის შემადგენლობაშიც ვულკანური
+            მასალაც გამოიყენებოდა, მრავალი ნაგებობის გამძლეობას
+            უწყობდა ხელს. საზოგადოებრივი აბანოები კი არა მხოლოდ
+            ჰიგიენის, არამედ შეხვედრისა და დასვენების ადგილებიც იყო.
+        </p>
+
+        <figure class="rome-photo">
+            <img src="images/roma3.jpg" alt="ძველი რომაული აკვედუკი">
+            <figcaption>რომაული აკვედუკი — წყლის მიწოდების ინჟინერული სისტემა</figcaption>
+        </figure>
+
+        <p>
+            რომის იმპერიის დაცემის შემდეგ ქალაქის მოსახლეობა და
+            პოლიტიკური მნიშვნელობა შემცირდა, თუმცა რომი არ გამქრალა.
+            მან ახალი როლი შეიძინა, როგორც რელიგიურმა და კულტურულმა ცენტრმა.
+        </p>
+
+        <div class="rome-quote">
+            დროში მოგზაურობა — ანტიკური ქალაქიდან თანამედროვე დედაქალაქამდე.
+        </div>
+
+        <h3>ანტიკური ურბანიზაცია</h3>
+
+        <p>
+            ძველ რომში არსებობდა იატაკქვეშა გათბობის სისტემა —
+            ჰიპოკაუსტი, რომელიც სახლებსა და საზოგადოებრივ აბანოებს ათბობდა.
+        </p>
+    </section>
+
+    <!-- აწმყო -->
+    <section class="rome-section">
+        <span class="era-label">02 / აწმყო</span>
+        <div class="section-label">MODERN ROME / თანამედროვე რომი</div>
+        <h2>თანამედროვე რომი — ქალაქი და მისი მოსახლეობა</h2>
+
+        <p>
+            დღევანდელი რომი იტალიის დედაქალაქია. აქ ანტიკური ნანგრევები,
+            შუა საუკუნეებისა და რენესანსის არქიტექტურა, საცხოვრებელი
+            უბნები, უნივერსიტეტები, ბიზნესები და თანამედროვე
+            სატრანსპორტო ქსელი ერთ ურბანულ სივრცეში თანაარსებობს.
+        </p>
+
+        <figure class="rome-photo">
+            <img src="images/roma4.jpg" alt="თანამედროვე რომის ქუჩა">
+            <figcaption>თანამედროვე რომი — ისტორიული არქიტექტურა და დღევანდელი ურბანული ცხოვრება</figcaption>
+        </figure>
+
+        <h3>დემოგრაფია — ვინ ცხოვრობს რომში?</h3>
+
+        <p>
+            დემოგრაფია სწავლობს მოსახლეობის რაოდენობას, ასაკობრივ
+            და სოციალურ სტრუქტურას, შობადობას, სიკვდილიანობასა
+            და მიგრაციას.
+        </p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <strong>2.745 მლნ</strong>
+                <span>რომის მუნიციპალიტეტის მოსახლეობა — 2025 წლის ბოლოს, მოცემული მონაცემით</span>
+            </div>
+
+            <div class="stat-card">
+                <strong>4.224 მლნ</strong>
+                <span>რომის მეტროპოლიური არეალის მოსახლეობა — 2024 წლის მონაცემით</span>
+            </div>
+        </div>
+
+        <h3>რომის დემოგრაფიული ტენდენციები</h3>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>მოსახლეობის დაბერება</h3>
+                <p>
+                    დაბალი შობადობა და სიცოცხლის ხანგრძლივობის ზრდა
+                    ზრდის ხანდაზმული მოსახლეობის წილს. ეს აძლიერებს
+                    ჯანდაცვისა და სოციალური მომსახურების საჭიროებას.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>მიგრაცია</h3>
+                <p>
+                    იტალიის სხვა რეგიონებიდან და უცხო ქვეყნებიდან
+                    ჩამოსული ადამიანები გავლენას ახდენენ ქალაქის
+                    კულტურულ მრავალფეროვნებასა და შრომით ბაზარზე.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>გარეუბნების ზრდა</h3>
+                <p>
+                    საცხოვრებლის ფასებისა და ცხოვრების პირობების გამო
+                    ზოგიერთი ოჯახი ცენტრიდან გარეუბნებში ან მეზობელ
+                    მუნიციპალიტეტებში გადადის. შედეგად იზრდება
+                    ყოველდღიური გადაადგილება მეტროპოლიურ არეალში.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>ბუნებრივი კლება</h3>
+                <p>
+                    როდესაც გარდაცვლილთა რაოდენობა დაბადებულთა
+                    რაოდენობას აღემატება, მოსახლეობა ბუნებრივად
+                    მცირდება. მიგრაციამ ეს ცვლილება შეიძლება
+                    ნაწილობრივ დააბალანსოს.
+                </p>
+            </div>
+        </div>
+
+        <h3>ურბანული გამოწვევები</h3>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>🚦 სატრანსპორტო გადატვირთვა</h3>
+                <p>საცობები, ხმაური და გამონაბოლქვი ქალაქის ყოველდღიური გამოწვევებია.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>🏠 საცხოვრებლის სიძვირე</h3>
+                <p>ცენტრიდან მოსახლეობის გადინება ზრდის ხელმისაწვდომი საცხოვრებლის საჭიროებას.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>🌡️ კლიმატის ცვლილება</h3>
+                <p>სიცხე, ძლიერი ნალექები და წყლის დეფიციტი ქალაქის გარემოზე მოქმედებს.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>🏛️ ისტორიული მემკვიდრეობა</h3>
+                <p>რესტავრაცია რთული და ძვირადღირებული პროცესია. საჭიროა მეცნიერული დაცვა და ფრთხილი დაგეგმვა.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- მომავალი -->
+    <section class="rome-section">
+        <span class="era-label">03 / მომავალი</span>
+        <div class="section-label">ROME 2050 / მომავლის ხედვა</div>
+        <h2>მარადიული ქალაქი არასოდეს ჩერდება!</h2>
+
+        <p>
+            2050 წლის რომის ზუსტი სახე წინასწარ ცნობილი არ არის.
+            თუმცა დღევანდელი გამოწვევებისა და მდგრადი განვითარების
+            პრინციპების მიხედვით შეგვიძლია წარმოვიდგინოთ რამდენიმე
+            შესაძლო ცვლილება.
+        </p>
+
+        <figure class="rome-photo">
+            <img src="images/roma5.jpg" alt="მწვანე და მდგრადი მომავლის ქალაქის კონცეფცია">
+            <figcaption>მომავლის ქალაქი — მწვანე სივრცეები, სუფთა ტრანსპორტი და თანამედროვე ტექნოლოგიები</figcaption>
+        </figure>
+
+        <h3>რომის ხუთი მომავლის მიმართულება</h3>
+
+        <div class="future-grid">
+
+            <div class="future-card">
+                <span class="number">01 / GREEN CITY</span>
+                <h3>🌳 მწვანე ურბანიზაცია</h3>
+                <p>
+                    მეტი პარკი, ხეებით დაფარული ქუჩები, მწვანე სახურავები
+                    და ჩრდილიანი საზოგადოებრივი სივრცეები შეამცირებს
+                    სიცხის გავლენას და გააუმჯობესებს გარემოს.
+                </p>
+            </div>
+
+            <div class="future-card">
+                <span class="number">02 / SMART TRANSPORT</span>
+                <h3>🚌 ჭკვიანი და სუფთა ტრანსპორტი</h3>
+                <p>
+                    ელექტროავტობუსები, გაუმჯობესებული მეტრო, ტრამვაი
+                    და უსაფრთხო ველობილიკები შეიძლება დაეხმაროს ქალაქს
+                    ავტომობილებზე დამოკიდებულების შემცირებაში.
+                </p>
+            </div>
+
+            <div class="future-card">
+                <span class="number">03 / CLIMATE</span>
+                <h3>💧 კლიმატთან ადაპტაცია</h3>
+                <p>
+                    წვიმის წყლის მართვა, გამწვანება, წყლის დაზოგვა
+                    და სიცხისგან დაცული საჯარო სივრცეები ქალაქს
+                    კლიმატურ რისკებთან შეგუებაში დაეხმარება.
+                </p>
+            </div>
+
+            <div class="future-card">
+                <span class="number">04 / TECHNOLOGY</span>
+                <h3>💡 ტექნოლოგიური ქალაქი</h3>
+                <p>
+                    ენერგოეფექტიანი შენობები, ჭკვიანი განათება და
+                    ციფრული მუნიციპალური სერვისები რესურსების
+                    უფრო ეფექტიან გამოყენებას შეუწყობს ხელს.
+                </p>
+            </div>
+
+            <div class="future-card">
+                <span class="number">05 / PEOPLE</span>
+                <h3>🤝 ადამიანზე მორგებული გარემო</h3>
+                <p>
+                    ხანდაზმულებისთვის ადაპტირებული სივრცეები,
+                    ახალგაზრდების განათლება და დასაქმება,
+                    ხელმისაწვდომი საცხოვრებელი და მიგრანტების
+                    ინტეგრაცია სოციალური მდგრადობის ნაწილია.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- საინტერესო ფაქტები -->
+    <section class="rome-section facts">
+        <div class="section-label">DID YOU KNOW? / საინტერესო ფაქტები</div>
+        <h2>იცოდით თუ არა?</h2>
+
+        <div class="fact-item">
+            <strong>01. წყლის ქალაქი</strong>
+            <p>
+                ძველ რომში აკვედუკების საშუალებით წყალი
+                ათეულობით კილომეტრიდან მიჰყავდათ ქალაქში.
+            </p>
+        </div>
+
+        <div class="fact-item">
+            <strong>02. კატები რომის მცხოვრებლები არიან</strong>
+            <p>
+                რომის ისტორიულ ნანგრევებში უამრავი კატა ცხოვრობს
+                და ქალაქის ერთგვარ სიმბოლოდაც იქცა.
+            </p>
+        </div>
+
+        <div class="fact-item">
+            <strong>03. ქალაქი შვიდ ბორცვზე</strong>
+            <p>
+                რომი შვიდ ისტორიულ ბორცვთან ასოცირდება,
+                რის გამოც მას „შვიდბორცვიან ქალაქსაც“ უწოდებენ.
+            </p>
+        </div>
+    </section>
+
+    <!-- დასკვნა -->
+    <section class="final-section">
+        <h2>ერთი ქალაქი. სამი ეპოქა.</h2>
+
+        <p>
+            რომის ისტორია გვიჩვენებს, რომ ქალაქის განვითარება
+            უწყვეტი პროცესია. პატარა დასახლებიდან მსოფლიო იმპერიის
+            ცენტრამდე, შემდეგ კი თანამედროვე ევროპულ დედაქალაქამდე —
+            რომმა არაერთი გარდაქმნა განიცადა.
+        </p>
+
+        <p>
+            მისი გამოცდილება გვასწავლის, რომ გეოგრაფიული მდებარეობა,
+            ბუნებრივი რესურსები, მოსახლეობა, ეკონომიკა, ტექნოლოგიები
+            და ისტორიული მემკვიდრეობა ერთმანეთთან მჭიდროდ არის დაკავშირებული.
+        </p>
+
+        <p>
+            დღეს რომის მთავარი ამოცანაა, შეინარჩუნოს თავისი უნიკალური
+            ისტორიული სახე და ამავე დროს უპასუხოს თანამედროვე ურბანულ
+            და დემოგრაფიულ გამოწვევებს.
+        </p>
+
+        <h2 style="text-align:center; margin-top:25px;">
+            ROMA — მარადიული ქალაქი.
+        </h2>
+    </section>
+
+</main>
+
+</body>
+</html>
+

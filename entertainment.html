@@ -1,0 +1,948 @@
+
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>გეოფოკუსი | გართობა</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* მთავარი გვერდის ზედა ნაწილის დიზაინი უცვლელია */
+
+.activities {
+    width: 92%;
+    max-width: 1150px;
+    margin: 35px auto 65px;
+}
+
+.activity-intro {
+    text-align: center;
+    padding: 35px 20px;
+    margin-bottom: 30px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(6,21,46,0.06);
+}
+
+.activity-intro h2 {
+    color: #a52a38;
+    font-family: "Noto Serif Georgian", serif;
+    font-size: 29px;
+    margin-top: 0;
+}
+
+.activity-intro p {
+    line-height: 1.8;
+    color: #52647c;
+}
+
+.activity-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.activity-tags span {
+    background: #edf3fb;
+    color: #174d91;
+    padding: 8px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.activity-card {
+    background: white;
+    padding: 28px;
+    margin-bottom: 27px;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(6,21,46,0.07);
+    border: 1px solid #e8edf4;
+}
+
+.activity-card h2 {
+    color: #174d91;
+    margin-top: 0;
+    font-size: 23px;
+    font-family: "Noto Serif Georgian", serif;
+}
+
+.activity-card h3 {
+    color: #a52a38;
+    margin-top: 25px;
+}
+
+.activity-card p {
+    line-height: 1.8;
+    color: #52647c;
+}
+
+.activity-card button {
+    background: #174d91;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 19px;
+    cursor: pointer;
+    margin: 12px 6px 0 0;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.activity-card button:hover {
+    background: #a52a38;
+    transform: translateY(-2px);
+}
+
+.activity-card input[type="text"] {
+    padding: 10px;
+    border: 1px solid #bdc9d8;
+    border-radius: 7px;
+    width: 100%;
+    max-width: 220px;
+    margin: 5px 0;
+    font-size: 14px;
+    outline: none;
+}
+
+.activity-card input:focus,
+.machine textarea:focus {
+    border-color: #174d91;
+    box-shadow: 0 0 0 2px rgba(23,77,145,0.12);
+}
+
+.activity-result {
+    font-weight: bold;
+    color: #174d91;
+    margin-top: 16px;
+    line-height: 1.7;
+}
+
+/* ძეგლების ფოტოები */
+
+.monuments {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 22px;
+}
+
+.monument {
+    background: #f4f7fb;
+    border-radius: 13px;
+    padding: 13px;
+    border: 1px solid #e2e9f2;
+}
+
+.monument img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 9px;
+}
+
+.monument h3 {
+    color: #174d91;
+    margin: 12px 0;
+}
+
+.monument input {
+    display: block;
+    max-width: none !important;
+    width: 100% !important;
+}
+
+/* კითხვები */
+
+.quiz-question {
+    padding: 18px;
+    background: #f4f7fb;
+    border-radius: 11px;
+    margin: 15px 0;
+    border: 1px solid #e5ebf3;
+}
+
+.quiz-question label {
+    display: block;
+    margin: 11px 0;
+    cursor: pointer;
+    line-height: 1.6;
+    color: #34465e;
+}
+
+.quiz-question input {
+    width: auto;
+    margin-right: 8px;
+}
+
+/* კროსვორდი */
+
+.crossword-scroll {
+    width: 100%;
+    overflow-x: auto;
+    padding: 15px 0;
+}
+
+.crossword-grid {
+    display: grid;
+    grid-template-columns: repeat(14, 32px);
+    grid-template-rows: repeat(16, 32px);
+    gap: 1px;
+    width: max-content;
+    margin: 15px auto;
+}
+
+.crossword-cell {
+    width: 32px;
+    height: 32px;
+    position: relative;
+}
+
+.crossword-cell input {
+    width: 32px !important;
+    height: 32px;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0;
+    border: 1px solid #263b55;
+    border-radius: 0;
+    background: white;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.crossword-cell input:focus {
+    background: #e4efff;
+    outline: 2px solid #174d91;
+    z-index: 2;
+}
+
+.crossword-number {
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    font-size: 9px;
+    font-weight: bold;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* დამალული სიტყვები */
+
+.word-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 36px);
+    gap: 3px;
+    width: max-content;
+    max-width: 100%;
+    margin: 20px auto;
+}
+
+.word-grid span {
+    width: 36px;
+    height: 36px;
+    background: #e5edf7;
+    border: 1px solid #c6d5e8;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.15s;
+}
+
+.word-grid span.selected {
+    background: #b8d3f5;
+    border-color: #174d91;
+}
+
+.word-grid span.found {
+    background: #a9d9b5;
+    border-color: #4c9860;
+    color: #174d35;
+}
+
+.word-help {
+    text-align: center;
+    color: #52647c;
+    font-size: 14px;
+}
+
+/* გამოცანები და დროის მანქანა */
+
+.riddle {
+    background: #f4f7fb;
+    padding: 16px;
+    margin: 13px 0;
+    border-radius: 10px;
+    line-height: 1.8;
+}
+
+.machine {
+    background: #edf3fb;
+    padding: 18px;
+    border-radius: 11px;
+    margin: 15px 0;
+}
+
+.machine textarea {
+    width: 100%;
+    min-height: 80px;
+    border: 1px solid #bdc9d8;
+    border-radius: 7px;
+    padding: 12px;
+    font-family: inherit;
+    resize: vertical;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* საბოლოო შედეგი */
+
+.score-box {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    background: #edf5ff;
+    border: 1px solid #c9ddf5;
+    color: #174d91;
+    line-height: 1.8;
+}
+
+/* Footer */
+
+footer {
+    background: #06152e;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+    margin-top: 50px;
+}
+
+footer h2 {
+    font-family: "Noto Serif Georgian", serif;
+}
+
+footer p {
+    color: #dce5f1;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #e7b9b9;
+}
+
+.copyright {
+    font-size: 13px;
+    margin-top: 20px;
+    opacity: 0.7;
+}
+
+@media(max-width: 600px) {
+    .activity-card {
+        padding: 18px;
+    }
+
+    .activity-intro {
+        padding: 25px 15px;
+    }
+
+    .activity-intro h2 {
+        font-size: 23px;
+    }
+
+    .activity-card h2 {
+        font-size: 20px;
+    }
+
+    .crossword-grid {
+        grid-template-columns: repeat(14, 27px);
+        grid-template-rows: repeat(16, 27px);
+    }
+
+    .crossword-cell,
+    .crossword-cell input {
+        width: 27px !important;
+        height: 27px;
+    }
+
+    .crossword-cell input {
+        font-size: 14px;
+    }
+
+    .word-grid {
+        grid-template-columns: repeat(12, 27px);
+        gap: 2px;
+    }
+
+    .word-grid span {
+        width: 27px;
+        height: 27px;
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="globe-icon">🌍</div>
+    <h1>გეოფოკუსი</h1>
+    <p>შეიცანი მსოფლიო, აღმოაჩინე მეტი!</p>
+</header>
+
+<nav class="navigation">
+    <a href="index.html">მთავარი</a>
+    <a href="sport.html">სპორტი</a>
+    <a href="education.html">შემეცნებითი</a>
+    <a href="sociology.html">სოციოლოგიური</a>
+    <a href="entertainment.html">გართობა</a>
+</nav>
+
+<main class="activities">
+
+    <div class="activity-intro">
+        <h2>🌍 ✨ მოგზაურობა ცოდნის სამყაროში ✨ 🌍</h2>
+        <p>შეამოწმე შენი ცოდნა, ამოხსენი გამოცანები და იმოგზაურე დროისა და გეოგრაფიის სამყაროში!</p>
+
+        <div class="activity-tags">
+            <span>👥 დემოგრაფია</span>
+            <span>🏙️ ურბანიზაცია</span>
+            <span>⏳ დროში მოგზაურობა</span>
+        </div>
+    </div>
+
+    <!-- 1. ქალაქების გამოცნობა -->
+
+    <section class="activity-card">
+        <h2>1. 🏛️ გამოიცანი ქალაქი, ქვეყანა და ეპოქა!</h2>
+        <p>დააკვირდი ოთხ ფოტოს და შეავსე თითოეული ძეგლის შესახებ ინფორმაცია.</p>
+
+        <div class="monuments">
+
+            <div class="monument">
+                <img src="images/landmark1.jpg" alt="ეიფელის კოშკი">
+                <h3>ფოტო 1</h3>
+                <input type="text" id="city1" placeholder="ქალაქი">
+                <input type="text" id="country1" placeholder="ქვეყანა">
+                <input type="text" id="century1" placeholder="საუკუნე">
+            </div>
+
+            <div class="monument">
+                <img src="images/landmark2.jpg" alt="თაჯ-მაჰალი">
+                <h3>ფოტო 2</h3>
+                <input type="text" id="city2" placeholder="ქალაქი">
+                <input type="text" id="country2" placeholder="ქვეყანა">
+                <input type="text" id="century2" placeholder="საუკუნე">
+            </div>
+
+            <div class="monument">
+                <img src="images/landmark3.jpg" alt="კოლიზეუმი">
+                <h3>ფოტო 3</h3>
+                <input type="text" id="city3" placeholder="ქალაქი">
+                <input type="text" id="country3" placeholder="ქვეყანა">
+                <input type="text" id="century3" placeholder="საუკუნე">
+            </div>
+
+            <div class="monument">
+                <img src="images/landmark4.jpg" alt="თავისუფლების ქანდაკება">
+                <h3>ფოტო 4</h3>
+                <input type="text" id="city4" placeholder="ქალაქი">
+                <input type="text" id="country4" placeholder="ქვეყანა">
+                <input type="text" id="century4" placeholder="საუკუნე">
+            </div>
+
+        </div>
+
+        <button onclick="checkMonuments()">პასუხების შემოწმება</button>
+        <p class="activity-result" id="monumentResult"></p>
+
+        <div class="quiz-question">
+            <b>ბონუს კითხვები:</b>
+            <p>1. რომელი ორი ძეგლია აგებული ერთსა და იმავე საუკუნეში?</p>
+            <input type="text" id="bonus1" placeholder="შენი პასუხი">
+
+            <p>2. რომელ ფოტოზეა ნაჩვენები ყველაზე მრავალრიცხოვანი ქალაქი?</p>
+            <input type="text" id="bonus2" placeholder="შენი პასუხი">
+        </div>
+    </section>
+
+    <!-- 2. ფაქტები -->
+
+    <section class="activity-card">
+        <h2>2. 🧠 ოთხი ცრუ ფაქტი, ერთი ჭეშმარიტება!</h2>
+        <p>თითოეულ ჯგუფში მონიშნე მხოლოდ ერთი სწორი პასუხი.</p>
+
+        <h3>👥 დემოგრაფია</h3>
+        <div class="quiz-question">
+            <label><input type="radio" name="demo" value="1"> მსოფლიოს მოსახლეობამ 8 მილიარდს 2022 წელს გადააჭარბა.</label>
+            <label><input type="radio" name="demo" value="2"> აფრიკა მსოფლიოს ყველაზე მრავალრიცხოვანი კონტინენტია.</label>
+            <label><input type="radio" name="demo" value="3"> დემოგრაფია ამინდის ცვლილებებს შეისწავლის.</label>
+            <label><input type="radio" name="demo" value="4"> XX საუკუნეში მსოფლიოს მოსახლეობა შემცირდა.</label>
+            <label><input type="radio" name="demo" value="5"> ჩინეთი დღეს მსოფლიოს ყველაზე მრავალრიცხოვანი ქვეყანაა.</label>
+        </div>
+
+        <h3>🏙️ ურბანიზაცია</h3>
+        <div class="quiz-question">
+            <label><input type="radio" name="urban" value="1"> პირველი ქალაქები დაახლოებით 1000 წლის წინ გაჩნდა.</label>
+            <label><input type="radio" name="urban" value="2"> მსოფლიოს მოსახლეობის ნახევარზე მეტი ქალაქებში ცხოვრობს.</label>
+            <label><input type="radio" name="urban" value="3"> ურბანიზაცია სოფლის მოსახლეობის ზრდას ნიშნავს.</label>
+            <label><input type="radio" name="urban" value="4"> საქართველოს მოსახლეობის უმეტესობა სოფლად ცხოვრობს.</label>
+            <label><input type="radio" name="urban" value="5"> 1800 წელს მსოფლიოს მოსახლეობის უმეტესობა ქალაქებში ცხოვრობდა.</label>
+        </div>
+
+        <button onclick="checkFacts()">პასუხების შემოწმება</button>
+        <p class="activity-result" id="factsResult"></p>
+    </section>
+
+    <!-- 3. კროსვორდი -->
+
+    <section class="activity-card">
+        <h2>3. 📝 გეოგრაფიული კროსვორდი</h2>
+        <p>წაიკითხე განმარტებები და ჩაწერე პასუხები უჯრებში.</p>
+
+        <div class="crossword-scroll">
+            <div class="crossword-grid" id="crosswordGrid"></div>
+        </div>
+
+        <h3>ჰორიზონტალურად:</h3>
+        <p><b>1.</b> მოსახლეობის ... — ქვეყნის მცხოვრებთა დათვლა და აღრიცხვა. (6 ასო)</p>
+        <p><b>2.</b> ისტორიული ეპოქა ან დროის მონაკვეთი. (5 ასო)</p>
+        <p><b>7.</b> ქალაქების ზრდისა და ქალაქის მოსახლეობის წილის მატების პროცესი. (11 ასო)</p>
+        <p><b>8.</b> ადამიანების საცხოვრებლად ერთი ადგილიდან მეორეში გადაადგილება. (8 ასო)</p>
+        <p><b>9.</b> საქართველოს დედაქალაქი და უდიდესი ქალაქი. (7 ასო)</p>
+
+        <h3>ვერტიკალურად:</h3>
+        <p><b>1.</b> ათასი წლისგან შემდგარი პერიოდი. (10 ასო)</p>
+        <p><b>3.</b> მეცნიერება, რომელიც მოსახლეობის რაოდენობასა და ცვლილებებს შეისწავლის. (10 ასო)</p>
+        <p><b>4.</b> რამდენიმე დიდი ქალაქის შერწყმით წარმოქმნილი უზარმაზარი დასახლება. (10 ასო)</p>
+        <p><b>5.</b> გარკვეულ პერიოდში დაბადებულთა რაოდენობა. (8 ასო)</p>
+        <p><b>6.</b> 100 წელი. (7 ასო)</p>
+
+        <button onclick="checkCrossword()">პასუხების შემოწმება</button>
+        <button onclick="clearCrossword()">გასუფთავება</button>
+        <p class="activity-result" id="crossResult"></p>
+    </section>
+
+    <!-- 4. დამალული სიტყვები -->
+
+    <section class="activity-card">
+        <h2>4. 🔎 იპოვე დამალული სიტყვები</h2>
+        <p>ასოების ბადეში მოძებნე სამი სიტყვა: დემოგრაფია, ურბანიზაცია და საუკუნე.</p>
+        <p class="word-help">დააჭირე სიტყვის ასოებს თანმიმდევრობით. შეგიძლია მოძებნო ჰორიზონტალურად ან ვერტიკალურად.</p>
+
+        <div class="word-grid" id="wordGrid"></div>
+
+        <p><b>ნაპოვნი სიტყვები:</b></p>
+        <p class="activity-result" id="foundWords">ჯერ არცერთი სიტყვა არ არის მონიშნული.</p>
+        <button onclick="resetWordGrid()">თავიდან დაწყება</button>
+    </section>
+
+    <!-- 5. გამოცანები -->
+
+    <section class="activity-card">
+        <h2>5. ❓ გამოიცანი, ვინ ვარ?</h2>
+        <p>წაიკითხე მინიშნებები და გამოიცანი პასუხები.</p>
+
+        <div class="riddle">
+            1. ჩემი დახმარებით იგებ, რამდენი ადამიანი ცხოვრობს ქვეყანაში.
+            <br><input id="riddle1" type="text" placeholder="ვინ ვარ?">
+        </div>
+
+        <div class="riddle">
+            2. მე ქალაქების ზრდასა და გაფართოებას უკავშირდები.
+            <br><input id="riddle2" type="text" placeholder="ვინ ვარ?">
+        </div>
+
+        <div class="riddle">
+            3. ჩემი დახმარებით შეგიძლია ერთი ეპოქიდან მეორეში იმოგზაურო.
+            <br><input id="riddle3" type="text" placeholder="ვინ ვარ?">
+        </div>
+
+        <div class="riddle">
+            4. ჩემი მიზეზით ადამიანები ერთი საცხოვრებელი ადგილიდან მეორეში გადადიან.
+            <br><input id="riddle4" type="text" placeholder="ვინ ვარ?">
+        </div>
+
+        <div class="riddle">
+            5. მე 100 წელს ვგულისხმობ.
+            <br><input id="riddle5" type="text" placeholder="ვინ ვარ?">
+        </div>
+
+        <div class="riddle">
+            ⭐ ბონუსი: მე ათასი წლისგან შემდგარი პერიოდი ვარ. ვინ ვარ?
+            <br><input id="riddle6" type="text" placeholder="ვინ ვარ?">
+        </div>
+
+        <button onclick="checkRiddles()">პასუხების შემოწმება</button>
+        <p class="activity-result" id="riddleResult"></p>
+    </section>
+
+    <!-- 6. დროის მანქანა -->
+
+    <section class="activity-card">
+        <h2>6. ⏳ დროის მანქანა გაფუჭდა!</h2>
+        <p>წარმოიდგინე, რომ დროის მანქანით სხვადასხვა ეპოქაში აღმოჩნდი. უპასუხე კითხვებს საკუთარი ფანტაზიით.</p>
+
+        <div class="machine">
+            <b>1. 1000 წლის წინ რომ მეცხოვრა, ქალაქში ყველაზე მეტად რა გამაკვირვებდა?</b>
+            <textarea placeholder="ჩაწერე შენი პასუხი..."></textarea>
+        </div>
+
+        <div class="machine">
+            <b>2. 1800 წელს რომ დავბრუნდე, ყველაზე მეტად რა მომენატრებოდა?</b>
+            <textarea placeholder="ჩაწერე შენი პასუხი..."></textarea>
+        </div>
+
+        <div class="machine">
+            <b>3. 2200 წელს რომ ვესტუმრო, ჩემი ქალაქი ალბათ როგორი იქნება?</b>
+            <textarea placeholder="ჩაწერე შენი პასუხი..."></textarea>
+        </div>
+
+        <div class="machine">
+            <b>4. მსოფლიოს მოსახლეობამ 20 მილიარდს რომ მიაღწიოს, რა შეიცვლება?</b>
+            <textarea placeholder="ჩაწერე შენი პასუხი..."></textarea>
+        </div>
+
+        <div class="machine">
+            <b>⭐ ბონუსი: მოიფიქრე ერთი უცნაური ან სასაცილო რამ, რომელიც მომავალ ქალაქში შეიძლება არსებობდეს.</b>
+            <textarea placeholder="ჩაწერე შენი პასუხი..."></textarea>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <h2>გეოფოკუსი 🌍</h2>
+    <p>შეიცანი მსოფლიო, აღმოაჩინე მეტი!</p>
+    <a href="https://www.instagram.com/geofocus.official/" target="_blank">@geofocus.official</a>
+    <p class="copyright">© 2026 გეოფოკუსი. ყველა უფლება დაცულია.</p>
+</footer>
+
+<script>
+
+function normalize(value) {
+    return value.trim().toLowerCase()
+        .replaceAll(" ", "")
+        .replaceAll("-", "")
+        .replaceAll("–", "");
+}
+
+// 1. ძეგლების პასუხები
+
+function checkMonuments() {
+    const answers = [
+        {city:["პარიზი"], country:["საფრანგეთი"], century:["მე-19","19","19-ე","მეცხრამეტე"]},
+        {city:["აგრა"], country:["ინდოეთი"], century:["მე-17","17","17-ე","მეჩვიდმეტე"]},
+        {city:["რომი"], country:["იტალია"], century:["პირველი","1","I"]},
+        {city:["ნიუიორკი","ნიუ იორკი"], country:["აშშ","ამერიკა","ამერიკისშეერთებულიშტატები"], century:["მე-19","19","19-ე","მეცხრამეტე"]}
+    ];
+
+    let score = 0;
+
+    answers.forEach((answer, index) => {
+        const n = index + 1;
+
+        if (answer.city.some(item => normalize(item) === normalize(document.getElementById("city" + n).value))) score++;
+        if (answer.country.some(item => normalize(item) === normalize(document.getElementById("country" + n).value))) score++;
+
+        const century = normalize(document.getElementById("century" + n).value);
+        if (answer.century.some(item => normalize(item) === century)) score++;
+    });
+
+    document.getElementById("monumentResult").textContent =
+        "შენი შედეგია: " + score + " / 12 სწორი პასუხი.";
+}
+
+// 2. ფაქტების შემოწმება
+
+function checkFacts() {
+    const demo = document.querySelector('input[name="demo"]:checked');
+    const urban = document.querySelector('input[name="urban"]:checked');
+
+    if (!demo || !urban) {
+        document.getElementById("factsResult").textContent =
+            "გთხოვ, ორივე ჯგუფში მონიშნე პასუხი.";
+        return;
+    }
+
+    let score = 0;
+    if (demo.value === "1") score++;
+    if (urban.value === "2") score++;
+
+    document.getElementById("factsResult").textContent =
+        "შენი შედეგია: " + score + " / 2 სწორი პასუხი.";
+}
+
+// 3. კროსვორდი
+
+const crosswordEntries = [
+    {number:"1", direction:"A", row:0, col:8, word:"აღწერა"},
+    {number:"1", direction:"D", row:0, col:8, word:"ათასწლეული"},
+    {number:"2", direction:"A", row:2, col:4, word:"ეპოქა"},
+    {number:"3", direction:"D", row:4, col:4, word:"დემოგრაფია"},
+    {number:"4", direction:"D", row:6, col:6, word:"მეგაპოლისი"},
+    {number:"5", direction:"D", row:6, col:10, word:"შობადობა"},
+    {number:"6", direction:"D", row:8, col:13, word:"საუკუნე"},
+    {number:"7", direction:"A", row:9, col:3, word:"ურბანიზაცია"},
+    {number:"8", direction:"A", row:13, col:0, word:"მიგრაცია"},
+    {number:"9", direction:"A", row:15, col:0, word:"თბილისი"}
+];
+
+const crosswordGrid = document.getElementById("crosswordGrid");
+const crosswordCells = {};
+
+crosswordEntries.forEach(entry => {
+    [...entry.word].forEach((letter, index) => {
+        const row = entry.row + (entry.direction === "D" ? index : 0);
+        const col = entry.col + (entry.direction === "A" ? index : 0);
+        const key = `${row}-${col}`;
+
+        if (!crosswordCells[key]) {
+            crosswordCells[key] = {letter, numbers:[]};
+        }
+
+        if (index === 0) {
+            crosswordCells[key].numbers.push(entry.number);
+        }
+    });
+});
+
+for (let row = 0; row < 16; row++) {
+    for (let col = 0; col < 14; col++) {
+        const key = `${row}-${col}`;
+        const cell = document.createElement("div");
+        cell.className = "crossword-cell";
+
+        if (crosswordCells[key]) {
+            const input = document.createElement("input");
+            input.type = "text";
+            input.maxLength = 1;
+            input.dataset.key = key;
+            input.autocomplete = "off";
+
+            input.addEventListener("input", () => {
+                input.value = [...input.value].slice(-1)[0] || "";
+                input.value = input.value.toLowerCase();
+
+                const inputs = [...crosswordGrid.querySelectorAll("input")];
+                const index = inputs.indexOf(input);
+
+                if (input.value && inputs[index + 1]) {
+                    inputs[index + 1].focus();
+                }
+            });
+
+            input.addEventListener("keydown", event => {
+                if (event.key === "Backspace" && !input.value) {
+                    const inputs = [...crosswordGrid.querySelectorAll("input")];
+                    const index = inputs.indexOf(input);
+                    if (inputs[index - 1]) inputs[index - 1].focus();
+                }
+            });
+
+            cell.appendChild(input);
+
+            if (crosswordCells[key].numbers.length) {
+                const number = document.createElement("span");
+                number.className = "crossword-number";
+                number.textContent = crosswordCells[key].numbers[0];
+                cell.appendChild(number);
+            }
+        }
+
+        crosswordGrid.appendChild(cell);
+    }
+}
+
+function checkCrossword() {
+    let score = 0;
+
+    crosswordEntries.forEach(entry => {
+        let answer = "";
+
+        [...entry.word].forEach((letter, index) => {
+            const row = entry.row + (entry.direction === "D" ? index : 0);
+            const col = entry.col + (entry.direction === "A" ? index : 0);
+
+            const input = crosswordGrid.querySelector(
+                `[data-key="${row}-${col}"]`
+            );
+
+            answer += input ? input.value : "";
+        });
+
+        if (normalize(answer) === normalize(entry.word)) {
+            score++;
+        }
+    });
+
+    document.getElementById("crossResult").textContent =
+        "სწორია " + score + " პასუხი 10-დან.";
+}
+
+function clearCrossword() {
+    crosswordGrid.querySelectorAll("input").forEach(input => {
+        input.value = "";
+    });
+
+    document.getElementById("crossResult").textContent = "";
+}
+
+// 4. დამალული სიტყვები
+
+const letters = [
+    "ფ კ ჩ დ ე ზ ყ დ ჰ ო გ ვ",
+    "უ რ ბ ა ნ ი ზ ა ც ი ა ძ",
+    "ც ე ჟ ვ ძ დ თ პ დ ჩ დ დ",
+    "პ გ ი ტ ც კ თ უ მ ზ ნ ე",
+    "ყ ზ ე დ ო ჯ ძ ფ ჭ ჭ ყ მ",
+    "უ ჟ მ ჟ ვ უ ჯ ქ წ ტ ე ო",
+    "თ ჰ ც ლ ქ კ ჯ ც გ ე ფ გ",
+    "ქ ღ ჯ ჭ ე ვ ს ხ ე დ უ რ",
+    "წ ტ შ ღ ე პ ო ქ ა ბ ჭ ა",
+    "ღ ლ თ ჯ დ ო ტ ი ჟ ჩ ჩ ფ",
+    "ჯ ვ ლ წ ჩ ს ი ძ ს ც ღ ი",
+    "შ პ კ ვ მ კ პ პ ა ჯ მ ა"
+].map(row => row.split(" "));
+
+const hiddenWords = ["ურბანიზაცია", "დემოგრაფია", "საუკუნე"];
+const wordGrid = document.getElementById("wordGrid");
+let selectedCells = [];
+const foundWords = new Set();
+
+letters.forEach((row, rowIndex) => {
+    row.forEach((letter, colIndex) => {
+        const cell = document.createElement("span");
+        cell.textContent = letter;
+        cell.dataset.row = rowIndex;
+        cell.dataset.col = colIndex;
+        cell.addEventListener("click", () => selectLetter(cell));
+        wordGrid.appendChild(cell);
+    });
+});
+
+function selectLetter(cell) {
+    if (cell.classList.contains("found")) return;
+
+    if (selectedCells.includes(cell)) {
+        clearSelection();
+        return;
+    }
+
+    if (selectedCells.length > 0) {
+        const previous = selectedCells[selectedCells.length - 1];
+        const rowDiff = Math.abs(Number(cell.dataset.row) - Number(previous.dataset.row));
+        const colDiff = Math.abs(Number(cell.dataset.col) - Number(previous.dataset.col));
+
+        if (rowDiff > 1 || colDiff > 1 || (rowDiff === 0 && colDiff === 0)) {
+            clearSelection();
+        }
+    }
+
+    cell.classList.add("selected");
+    selectedCells.push(cell);
+
+    const word = selectedCells.map(item => item.textContent).join("");
+    const reverseWord = [...word].reverse().join("");
+
+    const match = hiddenWords.find(item => item === word || item === reverseWord);
+
+    if (match) {
+        foundWords.add(match);
+
+        selectedCells.forEach(item => {
+            item.classList.remove("selected");
+            item.classList.add("found");
+        });
+
+        selectedCells = [];
+        updateFoundWords();
+        return;
+    }
+
+    const possible = hiddenWords.some(item =>
+        item.startsWith(word) || item.endsWith(word)
+    );
+
+    if (!possible) clearSelection();
+}
+
+function clearSelection() {
+    selectedCells.forEach(item => item.classList.remove("selected"));
+    selectedCells = [];
+}
+
+function updateFoundWords() {
+    const output = document.getElementById("foundWords");
+
+    if (foundWords.size === 0) {
+        output.textContent = "ჯერ არცერთი სიტყვა არ არის მონიშნული.";
+        return;
+    }
+
+    output.textContent = [...foundWords].join(" • ");
+
+    if (foundWords.size === hiddenWords.length) {
+        output.textContent += " — გილოცავ! ყველა სიტყვა იპოვე! 🎉";
+    }
+}
+
+function resetWordGrid() {
+    foundWords.clear();
+
+    wordGrid.querySelectorAll("span").forEach(cell => {
+        cell.classList.remove("selected", "found");
+    });
+
+    selectedCells = [];
+    updateFoundWords();
+}
+
+// 5. გამოცანები
+
+function checkRiddles() {
+    const answers = {
+        riddle1: ["მოსახლეობისაღწერა", "აღწერა"],
+        riddle2: ["ურბანიზაცია"],
+        riddle3: ["დროისმანქანა"],
+        riddle4: ["მიგრაცია"],
+        riddle5: ["საუკუნე"],
+        riddle6: ["ათასწლეული"]
+    };
+
+    let score = 0;
+
+    for (const id in answers) {
+        const value = normalize(document.getElementById(id).value);
+
+        if (answers[id].some(answer => normalize(answer) === value)) {
+            score++;
+        }
+    }
+
+    document.getElementById("riddleResult").textContent =
+        "სწორია " + score + " პასუხი 6-დან.";
+}
+
+</script>
+
+</body>
+</html>
+
+
+

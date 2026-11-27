@@ -1,0 +1,488 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+GO:wght@400;500;600;700&family=Noto+Serif+Georgian:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Fira GO', sans-serif;
+    background: #f4f7fb;
+    color: #26364a;
+}
+
+/* HEADER */
+
+.header {
+    background: #06152E;
+    color: white;
+    text-align: center;
+    padding: 30px 20px 35px;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: "🌐";
+    position: absolute;
+    font-size: 125px;
+    opacity: 0.07;
+    left: 7%;
+    top: -25px;
+}
+
+.header::after {
+    content: "🌍";
+    position: absolute;
+    font-size: 125px;
+    opacity: 0.07;
+    right: 7%;
+    bottom: -35px;
+}
+
+.globe-icon {
+    font-size: 29px;
+    margin-bottom: 5px;
+}
+
+.header h1 {
+    font-family: 'Noto Serif Georgian', serif;
+    font-size: 46px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    position: relative;
+}
+
+.header p {
+    color: #c5d8f1;
+    margin-top: 10px;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+/* NAVIGATION */
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 65px;
+    padding: 24px;
+    background: white;
+    border-bottom: 1px solid #e2e7ee;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #174d91;
+    font-family: 'Noto Serif Georgian', serif;
+    font-size: 17px;
+    font-weight: 600;
+    position: relative;
+    transition: 0.3s;
+}
+
+.navigation a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #a52a38;
+    bottom: -8px;
+    left: 0;
+    transition: 0.3s;
+}
+
+.navigation a:hover {
+    color: #a52a38;
+}
+
+.navigation a:hover::after {
+    width: 100%;
+}
+
+/* HERO */
+
+.welcome {
+    margin: 35px auto;
+    width: 90%;
+    max-width: 1250px;
+}
+
+.main-image {
+    height: 470px;
+    background:
+        linear-gradient(
+            rgba(3, 15, 35, 0.35),
+            rgba(3, 15, 35, 0.48)
+        ),
+        url('main-photo.jpg') center/cover;
+
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.image-overlay {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.hero-label {
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    color: #d8e7fa;
+}
+
+.main-image h2 {
+    font-family: 'Noto Serif Georgian', serif;
+    font-size: 38px;
+    text-shadow: 2px 2px 8px #000;
+}
+
+.image-overlay > p {
+    margin-top: 18px;
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+/* COMPASS */
+
+.compass {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+/* WORLD LINE */
+
+.world-line {
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+
+    color: #174d91;
+    font-size: 15px;
+    font-weight: 600;
+
+    border-top: 1px solid #d5dfeb;
+    border-bottom: 1px solid #d5dfeb;
+}
+
+/* INTRO */
+
+.intro {
+    max-width: 1050px;
+    margin: 55px auto;
+    padding: 45px 50px;
+
+    text-align: center;
+    background: white;
+
+    border-radius: 12px;
+    border-top: 4px solid #174d91;
+
+    box-shadow: 0 5px 25px rgba(16,45,80,0.06);
+}
+
+.intro-decoration {
+    color: #829ab5;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+.intro h2 {
+    color: #a52a38;
+    font-family: 'Noto Serif Georgian', serif;
+    font-size: 29px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.intro > p {
+    color: #174d91;
+    font-size: 19px;
+    line-height: 2.1;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+/* SLOGAN */
+
+.slogan {
+    margin: 35px 0;
+    padding: 22px 10px;
+    border-top: 1px solid #dce5f0;
+    border-bottom: 1px solid #dce5f0;
+}
+
+.slogan span {
+    font-size: 30px;
+}
+
+.intro h3 {
+    color: #123f78;
+    font-family: 'Noto Serif Georgian', serif;
+    font-size: 27px;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+/* INSTAGRAM */
+
+.intro .instagram-text {
+    font-size: 17px;
+    margin-bottom: 18px;
+}
+
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    color: #111;
+    font-size: 19px;
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.instagram-link:hover {
+    color: #174d91;
+    transform: scale(1.04);
+}
+
+/* CATEGORIES */
+
+.categories {
+    max-width: 1200px;
+    margin: 75px auto;
+    padding: 20px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading > span {
+    color: #8b2635;
+    font-size: 12px;
+    letter-spacing: 4px;
+    font-weight: 700;
+}
+
+.section-heading h2 {
+    color: #174d91;
+    font-family: 'Noto Serif Georgian', serif;
+    font-size: 29px;
+    margin: 15px 0;
+}
+
+.section-heading p {
+    color: #64758a;
+    font-size: 16px;
+}
+
+/* CATEGORY CARDS */
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.category {
+    min-height: 210px;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    text-decoration: none;
+    color: white;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    position: relative;
+    transition: 0.3s;
+}
+
+.category:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.13);
+}
+
+.sport {
+    background: linear-gradient(135deg, #102e55, #346caa);
+}
+
+.education {
+    background: linear-gradient(135deg, #174d91, #729dc9);
+}
+
+.sociology {
+    background: linear-gradient(135deg, #253d60, #637d9c);
+}
+
+.entertainment {
+    background: linear-gradient(135deg, #173e70, #8b5364);
+}
+
+.category-icon {
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.category h3 {
+    font-family: 'Noto Serif Georgian', serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.category p {
+    color: #e3edfa;
+    font-size: 15px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #06152E;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+footer h2 {
+    font-family: 'Noto Serif Georgian', serif;
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+footer p {
+    color: #c5d8f1;
+    margin-bottom: 15px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer .copyright {
+    font-size: 12px;
+    margin-top: 30px;
+    color: #8fa6c3;
+}
+
+/* MOBILE VERSION */
+
+@media (max-width: 700px) {
+
+    .header h1 {
+        font-size: 34px;
+    }
+
+    .navigation {
+        gap: 18px;
+        flex-wrap: wrap;
+    }
+
+    .navigation a {
+        font-size: 14px;
+    }
+
+    .main-image {
+        height: 320px;
+    }
+
+    .main-image h2 {
+        font-size: 25px;
+    }
+
+    .image-overlay > p {
+        font-size: 14px;
+    }
+
+    .compass {
+        width: 38px;
+        height: 38px;
+        top: 15px;
+        right: 15px;
+    }
+
+    .world-line {
+        gap: 14px;
+        font-size: 12px;
+    }
+
+    .intro {
+        padding: 30px 20px;
+        margin: 35px 15px;
+    }
+
+    .intro h2 {
+        font-size: 23px;
+    }
+
+    .intro > p {
+        font-size: 16px;
+    }
+
+    .intro h3 {
+        font-size: 21px;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 23px;
+    }
+
+}

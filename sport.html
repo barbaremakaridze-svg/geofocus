@@ -15,225 +15,175 @@
 body {
     margin: 0;
     background: #f4f7fb;
-    color: #172b4d;
-    font-family: "Fira GO", Arial, sans-serif;
+    color: #17243a;
+    font-family: "Fira GO", sans-serif;
 }
 
-/* სათაური */
-.article-heading {
+/* ზედა ნაწილი */
+.header {
+    background: #06152E;
+    color: white;
     text-align: center;
-    padding: 45px 20px 25px;
+    padding: 28px 15px;
 }
 
-.article-heading h2 {
-    color: #06152E;
+.globe-icon {
+    font-size: 38px;
+}
+
+.header h1 {
     font-family: "Noto Serif Georgian", serif;
-    font-size: 34px;
-    margin-bottom: 12px;
+    font-size: 38px;
+    margin: 8px 0;
 }
 
-.article-heading p {
-    color: #55708f;
-    font-size: 17px;
+.header p {
+    margin: 5px 0;
+    color: #d6e2f5;
 }
 
-/* მთავარი კონტეინერი */
-.article-container {
+/* მენიუ */
+.navigation {
+    background: #10294d;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 10px;
+}
+
+.navigation a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 17px;
+    border-radius: 7px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.navigation a:hover,
+.navigation a.active {
+    background: #a52a38;
+}
+
+/* სტატია */
+main {
     width: 90%;
-    max-width: 1100px;
-    margin: 0 auto 60px;
+    max-width: 1050px;
+    margin: 35px auto;
 }
 
-/* შესავალი */
-.intro-card {
+.intro {
+    text-align: center;
+    padding: 35px 20px;
+    background: #06152E;
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.intro h2 {
+    font-size: 32px;
+    margin: 0 0 12px;
+}
+
+.intro p {
+    color: #dce7f7;
+    font-size: 18px;
+    margin: 0;
+}
+
+.article-section {
     background: white;
     padding: 28px;
-    border-radius: 20px;
-    box-shadow: 0 5px 20px rgba(6, 21, 46, 0.07);
-    margin-bottom: 35px;
-    line-height: 1.9;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.article-section h2 {
+    color: #a52a38;
+    font-size: 24px;
+    margin-top: 0;
+    border-left: 5px solid #a52a38;
+    padding-left: 13px;
+}
+
+.article-section p {
     font-size: 17px;
-}
-
-.intro-card h3 {
-    color: #a52a38;
-    font-size: 23px;
-    margin-top: 0;
-}
-
-/* თემების სათაური */
-.topics-heading {
-    text-align: center;
-    font-size: 27px;
-    color: #06152E;
-    margin: 40px 0 25px;
-}
-
-/* გასაშლელი თემები */
-.topic-card {
-    background: white;
-    border-radius: 18px;
-    margin-bottom: 22px;
-    overflow: hidden;
-    box-shadow: 0 5px 18px rgba(6, 21, 46, 0.08);
-    border: 1px solid #e1e9f3;
-    transition: 0.3s;
-}
-
-.topic-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(6, 21, 46, 0.12);
-}
-
-.topic-card summary {
-    cursor: pointer;
-    list-style: none;
-    padding: 23px 25px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #09264c;
-    background: #eaf1fa;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-}
-
-.topic-card summary::-webkit-details-marker {
-    display: none;
-}
-
-.topic-card summary::after {
-    content: "＋";
-    color: #a52a38;
-    font-size: 25px;
-    font-weight: bold;
-}
-
-.topic-card[open] summary::after {
-    content: "−";
-}
-
-.topic-card[open] summary {
-    background: #dce9f8;
-    color: #06152E;
-}
-
-.topic-body {
-    padding: 25px;
     line-height: 1.9;
-    font-size: 16px;
-    color: #34465e;
+    text-align: justify;
 }
 
-.topic-body p {
-    margin-top: 0;
-}
-
-/* ფოტოების საერთო დიზაინი */
 .article-photo {
-    width: 100%;
-    margin: 28px 0 12px;
-    padding: 12px;
-    background: #f0f4f9;
-    border: 1px solid #e0e8f2;
-    border-radius: 20px;
+    margin: 22px 0;
+    text-align: center;
 }
 
 .article-photo img {
-    display: block;
     width: 100%;
-    height: auto;
     max-height: 520px;
     object-fit: contain;
-    object-position: center;
-    margin: 0 auto;
-    border-radius: 13px;
-    background: #e8edf4;
+    border-radius: 12px;
+    display: block;
+    margin: auto;
 }
 
-/* მერაბის ფოტო — მაღალი ფორმატი */
-.merab-photo {
-    max-width: 650px;
-    margin: 30px auto;
+.article-photo figcaption {
+    color: #66758a;
+    font-size: 14px;
+    margin-top: 9px;
 }
 
 .merab-photo img {
-    width: 100%;
     height: 650px;
-    object-fit: contain;
-    object-position: center;
-}
-
-/* სტადიონის ფოტო */
-.stadium-photo {
-    max-width: 900px;
-    margin: 30px auto;
 }
 
 .stadium-photo img {
-    width: 100%;
     height: 430px;
-    object-fit: contain;
-    object-position: center;
 }
 
-/* ფოტოების აღწერა */
-.photo-caption {
-    text-align: center;
-    color: #64748b;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-/* დასკვნა */
-.conclusion {
+footer {
     background: #06152E;
     color: white;
-    padding: 30px;
-    border-radius: 20px;
-    margin-top: 40px;
-    line-height: 1.9;
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: 45px;
 }
 
-.conclusion h3 {
-    color: #f2c6cb;
-    font-size: 23px;
-    margin-top: 0;
+footer a {
+    color: white;
+    text-decoration: none;
 }
 
-/* მობილური ვერსია */
-@media (max-width: 700px) {
-    .article-heading {
-        padding: 30px 15px 20px;
+@media (max-width: 650px) {
+    .header h1 {
+        font-size: 29px;
     }
 
-    .article-heading h2 {
-        font-size: 25px;
+    .navigation {
+        gap: 4px;
     }
 
-    .article-container {
+    .navigation a {
+        padding: 9px 10px;
+        font-size: 14px;
+    }
+
+    main {
         width: 94%;
     }
 
-    .intro-card {
-        padding: 20px;
+    .intro h2 {
+        font-size: 24px;
+    }
+
+    .article-section {
+        padding: 19px;
+    }
+
+    .article-section p {
         font-size: 15px;
-    }
-
-    .topic-card summary {
-        padding: 18px;
-        font-size: 17px;
-    }
-
-    .topic-body {
-        padding: 18px;
-        font-size: 15px;
-    }
-
-    .article-photo {
-        padding: 7px;
-        border-radius: 15px;
     }
 
     .merab-photo img {
@@ -257,243 +207,144 @@ body {
 
 <nav class="navigation">
     <a href="index.html">მთავარი</a>
-    <a href="sport.html">სპორტი</a>
+    <a href="sport.html" class="active">სპორტი</a>
     <a href="education.html">შემეცნებითი</a>
     <a href="sociology.html">სოციოლოგია</a>
     <a href="entertainment.html">გართობა</a>
 </nav>
 
-</nav>
-
 <main>
 
-    <section class="article-heading">
+    <section class="intro">
         <h2>გზა, რომელიც მსოფლიოს აერთიანებს</h2>
         <p>სპორტი საზღვრებს მიღმა</p>
     </section>
 
-    <div class="article-container">
+    <section class="article-section">
+        <h2>სპორტი — საერთო ენა მთელი მსოფლიოსთვის</h2>
 
-        <!-- შესავალი და ფოტო 1 -->
-        <section class="intro-card">
-            <h3>სპორტი — საერთო ენა მსოფლიოსთვის</h3>
+        <p>
+            სპორტი ადამიანებს ერთმანეთთან აკავშირებს მიუხედავად მათი
+            ეროვნებისა, ენისა თუ კულტურისა. ის მხოლოდ შეჯიბრება და
+            გამარჯვება არ არის — სპორტი გუნდურობის, დისციპლინის,
+            მიზანდასახულობისა და ურთიერთპატივისცემის გამოხატულებაა.
+        </p>
 
-            <p>
-                სპორტი მხოლოდ ფიზიკური აქტივობა ან შეჯიბრება არ არის.
-                ის მსოფლიოს სხვადასხვა კუთხის ადამიანებს აერთიანებს,
-                ხელს უწყობს კულტურების დაახლოებას და ქვეყნებს შორის
-                კავშირების გაძლიერებას.
-            </p>
+        <p>
+            სხვადასხვა ქვეყანაში სპორტის განსხვავებული სახეობებია
+            პოპულარული, თუმცა მათი მთავარი მიზანი საერთოა:
+            ადამიანების გაერთიანება და ჯანსაღი კონკურენციის განვითარება.
+        </p>
 
-            <p>
-                გლობალიზაციის პროცესმა სპორტიც შეცვალა. დღეს სპორტსმენები
-                ხშირად ასპარეზობენ საკუთარი ქვეყნის ფარგლებს გარეთ,
-                სხვადასხვა ეროვნების ადამიანები ერთ გუნდში თამაშობენ,
-                ხოლო სპორტული ღონისძიებები მილიონობით მაყურებელს აერთიანებს.
-            </p>
+        <figure class="article-photo">
+            <img src="images/sport1.jpg" alt="სპორტული ღონისძიება">
+            <figcaption>სპორტი — ადამიანების გაერთიანების საშუალება</figcaption>
+        </figure>
+    </section>
 
-            <figure class="article-photo">
-                <img src="images/sport1.jpg" alt="სპორტული ღონისძიება">
-                <figcaption class="photo-caption">
-                    სპორტი ადამიანებს მთელი მსოფლიოს მასშტაბით აერთიანებს
-                </figcaption>
-            </figure>
-        </section>
+    <section class="article-section">
+        <h2>შერეული ორთაბრძოლები და ახალი თაობის სპორტი</h2>
 
-        <h2 class="topics-heading">აღმოაჩინე სპორტის სამყარო</h2>
+        <p>
+            თანამედროვე სპორტში განსაკუთრებული ადგილი უკავია შერეულ
+            ორთაბრძოლებს (MMA). ეს სპორტის სახეობა სხვადასხვა საბრძოლო
+            დისციპლინის ელემენტებს აერთიანებს და სპორტსმენებისგან
+            დიდ მომზადებას, ტექნიკასა და გამძლეობას მოითხოვს.
+        </p>
 
-        <!-- თემა 1 და ფოტო 2 -->
-        <details class="topic-card">
-            <summary>🥊 MMA — სპორტი, რომელიც საზღვრებს სცდება</summary>
+        <p>
+            ბოლო წლებში MMA-მ საერთაშორისო მასშტაბით დიდი პოპულარობა
+            მოიპოვა. მისი შეჯიბრებები მილიონობით მაყურებლის ყურადღებას
+            იპყრობს და სხვადასხვა ქვეყნის სპორტსმენებს მსოფლიო ასპარეზზე
+            თავის წარმოჩენის შესაძლებლობას აძლევს.
+        </p>
 
-            <div class="topic-body">
+        <figure class="article-photo">
+            <img src="images/sport2.jpg" alt="შერეული ორთაბრძოლები">
+            <figcaption>MMA — თანამედროვე საბრძოლო სპორტის ერთ-ერთი სახეობა</figcaption>
+        </figure>
+    </section>
 
-                <p>
-                    შერეული საბრძოლო ხელოვნება (MMA) სპორტის ერთ-ერთი
-                    პოპულარული სახეობაა. მასში გაერთიანებულია სხვადასხვა
-                    საბრძოლო დისციპლინის ელემენტები.
-                </p>
+    <section class="article-section">
+        <h2>მერაბ დვალიშვილი — საქართველოს სახელი მსოფლიო არენაზე</h2>
 
-                <p>
-                    მისი ისტორიული წინამორბედია ძველ საბერძნეთში
-                    გავრცელებული პანკრატიონი — სპორტის სახეობა,
-                    რომელიც ჭიდაობისა და კრივის ელემენტებს აერთიანებდა.
-                </p>
+        <p>
+            მერაბ დვალიშვილი ქართველი შერეული ორთაბრძოლების სპორტსმენია,
+            რომელმაც საერთაშორისო სპორტულ სამყაროში მნიშვნელოვანი
+            აღიარება მოიპოვა. მისი კარიერა მიზანდასახულობისა და
+            შრომისმოყვარეობის მაგალითია.
+        </p>
 
-                <p>
-                    თანამედროვე MMA-ს განვითარებაში მნიშვნელოვანი
-                    როლი შეასრულა UFC-მ, რომელიც 1993 წელს დაარსდა.
-                    დღეს ეს ორგანიზაცია მსოფლიოს სხვადასხვა ქვეყნიდან
-                    სპორტსმენებს აერთიანებს.
-                </p>
+        <p>
+            დვალიშვილის წარმატებამ საქართველოს სახელი კიდევ უფრო
+            გააცნო საერთაშორისო აუდიტორიას. მისი გამოსვლები
+            ქართველი გულშემატკივრებისთვის განსაკუთრებული ინტერესის
+            საგანია.
+        </p>
 
-                <figure class="article-photo">
-                    <img src="images/sport2.jpg" alt="შერეული საბრძოლო ხელოვნება">
-                    <figcaption class="photo-caption">
-                        შერეული საბრძოლო ხელოვნება — MMA
-                    </figcaption>
-                </figure>
+        <figure class="article-photo merab-photo">
+            <img src="images/sport3.jpg" alt="მერაბ დვალიშვილი">
+            <figcaption>მერაბ დვალიშვილი — ქართველი სპორტსმენი</figcaption>
+        </figure>
+    </section>
 
-                <p>
-                    ამის მაგალითია ქართველი მებრძოლი მერაბ დვალიშვილი,
-                    რომელმაც თავისი სპორტული კარიერის მნიშვნელოვანი
-                    ნაწილი აშშ-ში განავითარა და საერთაშორისო
-                    ასპარეზზე საქართველოს სახელი გაიტანა.
-                </p>
+    <section class="article-section">
+        <h2>ფეხბურთი — სპორტი, რომელიც მსოფლიოს აერთიანებს</h2>
 
-                <!-- ფოტო 3 — მერაბი -->
-                <figure class="article-photo merab-photo">
-                    <img src="images/sport3.jpg" alt="მერაბ დვალიშვილი">
-                    <figcaption class="photo-caption">
-                        ქართველი მებრძოლი — მერაბ დვალიშვილი
-                    </figcaption>
-                </figure>
+        <p>
+            ფეხბურთი მსოფლიოში ერთ-ერთი ყველაზე პოპულარული სპორტია.
+            მას მილიონობით ადამიანი თამაშობს და გულშემატკივრობს.
+            ფეხბურთი სხვადასხვა კულტურისა და ქვეყნის ადამიანებს
+            საერთო ინტერესის გარშემო აერთიანებს.
+        </p>
 
-            </div>
-        </details>
+        <p>
+            მსოფლიო ჩემპიონატი კი სპორტული სამყაროს ერთ-ერთი
+            უმნიშვნელოვანესი მოვლენაა. ამ ტურნირზე ქვეყნების
+            ნაკრებები ერთმანეთს ეჯიბრებიან და საკუთარი ქვეყნის
+            სახელით გამოდიან.
+        </p>
 
-        <!-- თემა 2 და ფოტო 4 -->
-        <details class="topic-card">
-            <summary>⚽ ფეხბურთი — გლობალიზაციის ერთ-ერთი სიმბოლო</summary>
+        <figure class="article-photo">
+            <img src="images/sport4.jpg" alt="ფეხბურთის მატჩი">
+            <figcaption>ფეხბურთი — მილიონობით ადამიანის საერთო ინტერესი</figcaption>
+        </figure>
+    </section>
 
-            <div class="topic-body">
+    <section class="article-section">
+        <h2>სპორტის მომავალი</h2>
 
-                <p>
-                    ფეხბურთი მსოფლიოში ერთ-ერთი ყველაზე გავრცელებული
-                    სპორტის სახეობაა. მას მილიონობით ადამიანი თამაშობს
-                    და უყურებს სხვადასხვა ქვეყანაში.
-                </p>
+        <p>
+            ტექნოლოგიურმა განვითარებამ სპორტზეც მნიშვნელოვანი გავლენა
+            მოახდინა. თანამედროვე სტადიონები, სპორტსმენების მომზადების
+            ახალი მეთოდები და ვიდეოგამეორების სისტემები შეჯიბრებებს
+            უფრო საინტერესო და ორგანიზებულს ხდის.
+        </p>
 
-                <p>
-                    თანამედროვე ფეხბურთში სპორტსმენები ხშირად იცვლიან
-                    საცხოვრებელ ქვეყანას და კარიერას უცხოურ კლუბებში
-                    აგრძელებენ. ეს სპორტული მიგრაციის ერთ-ერთი მაგალითია.
-                </p>
+        <p>
+            მომავალში სპორტის განვითარებაში კიდევ უფრო დიდ როლს
+            ითამაშებს ტექნოლოგია, საერთაშორისო თანამშრომლობა და
+            ახალგაზრდების ჩართულობა. სპორტი კვლავ დარჩება სივრცედ,
+            სადაც ადამიანები საერთო მიზნებითა და ემოციებით ერთიანდებიან.
+        </p>
 
-                <p>
-                    ამის მაგალითია ქართველი ფეხბურთელი ხვიჩა
-                    კვარაცხელია, რომლის კარიერულმა გზამ საქართველო
-                    და ევროპის სხვადასხვა საფეხბურთო ქვეყანა დააკავშირა.
-                </p>
+        <figure class="article-photo stadium-photo">
+            <img src="images/sport5.jpg" alt="თანამედროვე სპორტული სტადიონი">
+            <figcaption>სპორტის მომავალი — ახალი შესაძლებლობები და განვითარება</figcaption>
+        </figure>
+    </section>
 
-                <figure class="article-photo">
-                    <img src="images/sport4.jpg" alt="ფეხბურთი">
-                    <figcaption class="photo-caption">
-                        ფეხბურთი — სპორტი, რომელიც მილიონობით ადამიანს აერთიანებს
-                    </figcaption>
-                </figure>
-
-            </div>
-        </details>
-
-        <!-- თემა 3 და ფოტო 5 -->
-        <details class="topic-card">
-            <summary>🏆 მსოფლიო ჩემპიონატი — სპორტული გლობალიზაციის ისტორია</summary>
-
-            <div class="topic-body">
-
-                <p>
-                    ფეხბურთის მსოფლიო ჩემპიონატი პირველად 1930 წელს
-                    ურუგვაიში ჩატარდა. მასში 13 ქვეყნის ნაკრები მონაწილეობდა.
-                </p>
-
-                <p>
-                    იმ პერიოდში საერთაშორისო მოგზაურობა გაცილებით
-                    რთული იყო, ვიდრე დღეს. მონაწილე გუნდების ნაწილი
-                    ურუგვაიში გემით ჩავიდა.
-                </p>
-
-                <p>
-                    დღეს მსოფლიო ჩემპიონატი ერთ-ერთი ყველაზე მასშტაბური
-                    სპორტული ღონისძიებაა. მასში მონაწილეობენ სხვადასხვა
-                    კონტინენტის ქვეყნები, ხოლო თამაშებს მსოფლიოს
-                    მილიონობით მაყურებელი ადევნებს თვალს.
-                </p>
-
-                <figure class="article-photo stadium-photo">
-                    <img src="images/sport5.jpg" alt="მსოფლიო საფეხბურთო სტადიონი">
-                    <figcaption class="photo-caption">
-                        ფეხბურთის მსოფლიო ჩემპიონატი
-                    </figcaption>
-                </figure>
-
-            </div>
-        </details>
-
-        <!-- თემა 4 -->
-        <details class="topic-card">
-            <summary>🌍 სპორტი და რეგიონების განვითარება</summary>
-
-            <div class="topic-body">
-
-                <p>
-                    სპორტს მნიშვნელოვანი როლი აქვს არა მხოლოდ
-                    დიდ ქალაქებში, არამედ მცირე დასახლებებსა და
-                    რეგიონებშიც.
-                </p>
-
-                <p>
-                    სპორტული ინფრასტრუქტურის განვითარება ხელს უწყობს
-                    ადგილობრივი მოსახლეობის გააქტიურებას, ახალი
-                    შესაძლებლობების შექმნას და რეგიონების პოპულარიზაციას.
-                </p>
-
-                <p>
-                    საერთაშორისო შეჯიბრებების მასპინძლობა კი ხელს
-                    უწყობს ტურიზმის განვითარებას და ქვეყნის
-                    ცნობადობის გაზრდას.
-                </p>
-
-            </div>
-        </details>
-
-        <!-- თემა 5 -->
-        <details class="topic-card">
-            <summary>✈️ დაბრუნებული მიგრაცია — გამოცდილება სამშობლოსთვის</summary>
-
-            <div class="topic-body">
-
-                <p>
-                    სპორტსმენები, რომლებიც კარიერის განმავლობაში
-                    უცხოეთში ცხოვრობენ და ვარჯიშობენ, ხშირად იძენენ
-                    ახალ ცოდნასა და გამოცდილებას.
-                </p>
-
-                <p>
-                    ზოგიერთი მათგანი მოგვიანებით სამშობლოში ბრუნდება
-                    და მიღებულ გამოცდილებას ადგილობრივ სპორტსმენებს
-                    უზიარებს.
-                </p>
-
-                <p>
-                    ეს პროცესი დაბრუნებული მიგრაციის მაგალითია.
-                    მისი საშუალებით ცოდნა და გამოცდილება ქვეყნებს
-                    შორის გადაადგილდება და ადგილობრივი სპორტის
-                    განვითარებას უწყობს ხელს.
-                </p>
-
-            </div>
-        </details>
-
-        <!-- დასკვნა -->
-        <section class="conclusion">
-            <h3>დასკვნა</h3>
-
-            <p>
-                სპორტი ნათლად გვიჩვენებს, თუ რამდენად დაკავშირებულია
-                თანამედროვე მსოფლიო. ის აერთიანებს ადამიანებს,
-                ქვეყნებსა და კულტურებს, ქმნის ახალ შესაძლებლობებს
-                და ხელს უწყობს გამოცდილების გაზიარებას.
-            </p>
-
-            <p>
-                სწორედ ამიტომ სპორტი გლობალიზაციის ერთ-ერთი
-                მნიშვნელოვანი ნაწილია.
-            </p>
-        </section>
-
-    </div>
 </main>
+
+<footer>
+    <p>© გეოფოკუსი — შეიცანი მსოფლიო, აღმოაჩინე მეტი!</p>
+    <p>
+        Instagram:
+        <a href="https://www.instagram.com/geofocus.official/" target="_blank">
+            @geofocus.official
+        </a>
+    </p>
+</footer>
 
 </body>
 </html>

@@ -15,108 +15,68 @@
 body {
     margin: 0;
     background: #f4f7fb;
-    color: #17243a;
-    font-family: "Fira GO", sans-serif;
+    color: #26364a;
+    font-family: 'Fira GO', sans-serif;
 }
 
-/* ზედა ნაწილი */
-.header {
-    background: #06152E;
-    color: white;
-    text-align: center;
-    padding: 28px 15px;
-}
+/* SPORT ARTICLE */
 
-.globe-icon {
-    font-size: 38px;
-}
-
-.header h1 {
-    font-family: "Noto Serif Georgian", serif;
-    font-size: 38px;
-    margin: 8px 0;
-}
-
-.header p {
-    margin: 5px 0;
-    color: #d6e2f5;
-}
-
-/* მენიუ */
-.navigation {
-    background: #10294d;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 14px 10px;
-}
-
-.navigation a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 17px;
-    border-radius: 7px;
-    font-weight: bold;
-    transition: 0.2s;
-}
-
-.navigation a:hover,
-.navigation a.active {
-    background: #a52a38;
-}
-
-/* სტატია */
-main {
+.sport-article {
     width: 90%;
-    max-width: 1050px;
-    margin: 35px auto;
+    max-width: 1100px;
+    margin: 35px auto 65px;
 }
 
-.intro {
+.sport-intro {
+    background: white;
     text-align: center;
-    padding: 35px 20px;
-    background: #06152E;
-    color: white;
+    padding: 35px 25px;
     border-radius: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 16px rgba(6,21,46,0.06);
 }
 
-.intro h2 {
-    font-size: 32px;
-    margin: 0 0 12px;
+.sport-intro h2 {
+    color: #a52a38;
+    font-family: 'Noto Serif Georgian', serif;
+    font-size: 30px;
+    margin-bottom: 12px;
 }
 
-.intro p {
-    color: #dce7f7;
+.sport-intro p {
+    color: #52647c;
     font-size: 18px;
-    margin: 0;
 }
 
-.article-section {
+.sport-section {
     background: white;
     padding: 28px;
-    border-radius: 14px;
+    border-radius: 15px;
     margin-bottom: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    box-shadow: 0 4px 16px rgba(6,21,46,0.06);
+    border: 1px solid #e8edf4;
 }
 
-.article-section h2 {
-    color: #a52a38;
-    font-size: 24px;
+.sport-section h2 {
+    color: #174d91;
+    font-family: 'Noto Serif Georgian', serif;
+    font-size: 23px;
     margin-top: 0;
+    margin-bottom: 18px;
     border-left: 5px solid #a52a38;
     padding-left: 13px;
 }
 
-.article-section p {
-    font-size: 17px;
+.sport-section p {
+    color: #52647c;
+    font-size: 16px;
     line-height: 1.9;
     text-align: justify;
+    margin-bottom: 15px;
 }
 
 .article-photo {
-    margin: 22px 0;
+    margin: 22px 0 8px;
     text-align: center;
 }
 
@@ -130,9 +90,9 @@ main {
 }
 
 .article-photo figcaption {
-    color: #66758a;
+    color: #718096;
     font-size: 14px;
-    margin-top: 9px;
+    margin-top: 10px;
 }
 
 .merab-photo img {
@@ -143,12 +103,23 @@ main {
     height: 430px;
 }
 
+/* FOOTER */
+
 footer {
-    background: #06152E;
+    background: #06152e;
     color: white;
     text-align: center;
-    padding: 25px 15px;
-    margin-top: 45px;
+    padding: 30px 15px;
+    margin-top: 50px;
+}
+
+footer h2 {
+    font-family: "Noto Serif Georgian", serif;
+}
+
+footer p {
+    color: #dce5f1;
+    margin-top: 10px;
 }
 
 footer a {
@@ -156,33 +127,44 @@ footer a {
     text-decoration: none;
 }
 
-@media (max-width: 650px) {
-    .header h1 {
-        font-size: 29px;
-    }
+footer a:hover {
+    color: #e7b9b9;
+}
 
-    .navigation {
-        gap: 4px;
-    }
+.copyright {
+    font-size: 13px;
+    margin-top: 20px;
+    opacity: 0.7;
+}
 
-    .navigation a {
-        padding: 9px 10px;
-        font-size: 14px;
-    }
+/* MOBILE */
 
-    main {
+@media(max-width: 700px) {
+    .sport-article {
         width: 94%;
     }
 
-    .intro h2 {
-        font-size: 24px;
+    .sport-intro {
+        padding: 25px 16px;
     }
 
-    .article-section {
+    .sport-intro h2 {
+        font-size: 23px;
+    }
+
+    .sport-intro p {
+        font-size: 15px;
+    }
+
+    .sport-section {
         padding: 19px;
     }
 
-    .article-section p {
+    .sport-section h2 {
+        font-size: 20px;
+    }
+
+    .sport-section p {
         font-size: 15px;
     }
 
@@ -199,28 +181,32 @@ footer a {
 
 <body>
 
+<!-- HEADER — იგივეა, რაც სხვა გვერდებზე -->
+
 <header class="header">
     <div class="globe-icon">🌍</div>
     <h1>გეოფოკუსი</h1>
     <p>შეიცანი მსოფლიო, აღმოაჩინე მეტი!</p>
 </header>
 
+<!-- NAVIGATION -->
+
 <nav class="navigation">
     <a href="index.html">მთავარი</a>
-    <a href="sport.html" class="active">სპორტი</a>
+    <a href="sport.html">სპორტი</a>
     <a href="education.html">შემეცნებითი</a>
     <a href="sociology.html">სოციოლოგია</a>
     <a href="entertainment.html">გართობა</a>
 </nav>
 
-<main>
+<main class="sport-article">
 
-    <section class="intro">
+    <section class="sport-intro">
         <h2>გზა, რომელიც მსოფლიოს აერთიანებს</h2>
         <p>სპორტი საზღვრებს მიღმა</p>
     </section>
 
-    <section class="article-section">
+    <section class="sport-section">
         <h2>სპორტი — საერთო ენა მთელი მსოფლიოსთვის</h2>
 
         <p>
@@ -242,7 +228,7 @@ footer a {
         </figure>
     </section>
 
-    <section class="article-section">
+    <section class="sport-section">
         <h2>შერეული ორთაბრძოლები და ახალი თაობის სპორტი</h2>
 
         <p>
@@ -265,7 +251,7 @@ footer a {
         </figure>
     </section>
 
-    <section class="article-section">
+    <section class="sport-section">
         <h2>მერაბ დვალიშვილი — საქართველოს სახელი მსოფლიო არენაზე</h2>
 
         <p>
@@ -288,7 +274,7 @@ footer a {
         </figure>
     </section>
 
-    <section class="article-section">
+    <section class="sport-section">
         <h2>ფეხბურთი — სპორტი, რომელიც მსოფლიოს აერთიანებს</h2>
 
         <p>
@@ -311,7 +297,7 @@ footer a {
         </figure>
     </section>
 
-    <section class="article-section">
+    <section class="sport-section">
         <h2>სპორტის მომავალი</h2>
 
         <p>
@@ -337,13 +323,12 @@ footer a {
 </main>
 
 <footer>
-    <p>© გეოფოკუსი — შეიცანი მსოფლიო, აღმოაჩინე მეტი!</p>
-    <p>
-        Instagram:
-        <a href="https://www.instagram.com/geofocus.official/" target="_blank">
-            @geofocus.official
-        </a>
-    </p>
+    <h2>გეოფოკუსი 🌍</h2>
+    <p>შეიცანი მსოფლიო, აღმოაჩინე მეტი!</p>
+    <a href="https://www.instagram.com/geofocus.official/" target="_blank">
+        @geofocus.official
+    </a>
+    <p class="copyright">© 2026 გეოფოკუსი. ყველა უფლება დაცულია.</p>
 </footer>
 
 </body>
